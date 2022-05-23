@@ -1,0 +1,56 @@
+﻿<Page x:Class="WpfAppOnOnOwn.Pages.MenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfAppOnOnOwn.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Title="MenuPage">
+
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+
+
+        <ListView x:Name="prod" ScrollViewer.VerticalScrollBarVisibility="Visible" ItemsSource="{Binding menu}" Grid.Column="0" Grid.ColumnSpan="8" Grid.Row="1" Grid.RowSpan="2" Margin="0,0,0,6">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="№" DisplayMemberBinding="{Binding IDmenu}"/>
+
+                    <GridViewColumn Header="Фото" Width="200">
+                        <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                                <Image Source="{Binding img}" Height="200" Margin="10"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Название блюда" Width="200" DisplayMemberBinding="{Binding NameDish}"/>
+                    <GridViewColumn Header="Страна" Width="100" DisplayMemberBinding="{Binding Country.NameCountry}"/>
+                    <GridViewColumn Header="Тип" Width="100" DisplayMemberBinding="{Binding Type.NameType}"/>
+                    <GridViewColumn Header="Цена" Width="100" DisplayMemberBinding="{Binding Price}"/>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+            <!--<TextBlock x:Name="tb_count" Grid.Column="1" Grid.Row="1" FontSize="16" Width="60" VerticalAlignment="Top" TextAlignment="Center" HorizontalAlignment="Center"/>-->
+        <Button x:Name="add" Grid.Column="0" Grid.Row="0" Visibility="Hidden" Content="Button" HorizontalAlignment="Left" Margin="10,0,0,0"  VerticalAlignment="Center" Height="38" Width="105"/>
+    </Grid>
+
+</Page>

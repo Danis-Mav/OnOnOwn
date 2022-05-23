@@ -1,0 +1,30 @@
+﻿<Page x:Class="WpfAppOnOnOwn.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfAppOnOnOwn.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Title="MainPage">
+
+    <Grid>
+
+        <Button FontSize="20" 
+                Content="Сделать заказ" 
+                Height="100" 
+                Width="300" 
+                Background="Aquamarine"
+                Margin="0,100,0,0" Click="Button_Click"
+                />
+        
+        <Button FontSize="10" 
+                Content="для Администраторов" 
+                Height="50" 
+                Width="100" 
+                Background="Aquamarine"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Click="Login_Click"/>
+    </Grid>
+</Page>

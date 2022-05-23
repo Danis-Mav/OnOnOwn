@@ -1,0 +1,469 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище OnOnOwnModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="IDcountry" />
+          </Key>
+          <Property Name="IDcountry" Type="int" Nullable="false" />
+          <Property Name="NameCountry" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="menu">
+          <Key>
+            <PropertyRef Name="IDmenu" />
+          </Key>
+          <Property Name="IDmenu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameDish" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price" Type="int" />
+          <Property Name="IDcountry" Type="int" />
+          <Property Name="IDtype" Type="int" />
+          <Property Name="img" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="IDorder" />
+          </Key>
+          <Property Name="IDorder" Type="int" Nullable="false" />
+          <Property Name="FullPrice" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderMenu">
+          <Key>
+            <PropertyRef Name="IDom" />
+          </Key>
+          <Property Name="IDorder" Type="int" Nullable="false" />
+          <Property Name="IDmenu" Type="int" Nullable="false" />
+          <Property Name="IDom" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stol">
+          <Key>
+            <PropertyRef Name="IDstol" />
+          </Key>
+          <Property Name="IDstol" Type="int" Nullable="false" />
+          <Property Name="№stol" Type="int" />
+          <Property Name="IDorder" Type="int" />
+        </EntityType>
+        <EntityType Name="StopList">
+          <Key>
+            <PropertyRef Name="IDst" />
+          </Key>
+          <Property Name="IDst" Type="int" Nullable="false" />
+          <Property Name="IDmenu" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="IDtype" />
+          </Key>
+          <Property Name="IDtype" Type="int" Nullable="false" />
+          <Property Name="NameType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_menu_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="menu" Type="Self.menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="IDcountry" />
+            </Principal>
+            <Dependent Role="menu">
+              <PropertyRef Name="IDcountry" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_menu_Type">
+          <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+          <End Role="menu" Type="Self.menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="IDtype" />
+            </Principal>
+            <Dependent Role="menu">
+              <PropertyRef Name="IDtype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderMenu_menu">
+          <End Role="menu" Type="Self.menu" Multiplicity="1" />
+          <End Role="OrderMenu" Type="Self.OrderMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="menu">
+              <PropertyRef Name="IDmenu" />
+            </Principal>
+            <Dependent Role="OrderMenu">
+              <PropertyRef Name="IDmenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderMenu_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderMenu" Type="Self.OrderMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="IDorder" />
+            </Principal>
+            <Dependent Role="OrderMenu">
+              <PropertyRef Name="IDorder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stol_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="Stol" Type="Self.Stol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="IDorder" />
+            </Principal>
+            <Dependent Role="Stol">
+              <PropertyRef Name="IDorder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StopList_menu">
+          <End Role="menu" Type="Self.menu" Multiplicity="0..1" />
+          <End Role="StopList" Type="Self.StopList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="menu">
+              <PropertyRef Name="IDmenu" />
+            </Principal>
+            <Dependent Role="StopList">
+              <PropertyRef Name="IDmenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище OnOnOwnModelContainer">
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="menu" EntityType="Self.menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderMenu" EntityType="Self.OrderMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stol" EntityType="Self.Stol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StopList" EntityType="Self.StopList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_menu_Country" Association="Self.FK_menu_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="menu" EntitySet="menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_menu_Type" Association="Self.FK_menu_Type">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="menu" EntitySet="menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderMenu_menu" Association="Self.FK_OrderMenu_menu">
+            <End Role="menu" EntitySet="menu" />
+            <End Role="OrderMenu" EntitySet="OrderMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderMenu_Order" Association="Self.FK_OrderMenu_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderMenu" EntitySet="OrderMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stol_Order" Association="Self.FK_Stol_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Stol" EntitySet="Stol" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StopList_menu" Association="Self.FK_StopList_menu">
+            <End Role="menu" EntitySet="menu" />
+            <End Role="StopList" EntitySet="StopList" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OnOnOwnModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="IDcountry" />
+          </Key>
+          <Property Name="IDcountry" Type="Int32" Nullable="false" />
+          <Property Name="NameCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="menu" Relationship="Self.FK_menu_Country" FromRole="Country" ToRole="menu" />
+        </EntityType>
+        <EntityType Name="menu">
+          <Key>
+            <PropertyRef Name="IDmenu" />
+          </Key>
+          <Property Name="IDmenu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameDish" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="IDcountry" Type="Int32" />
+          <Property Name="IDtype" Type="Int32" />
+          <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_menu_Country" FromRole="menu" ToRole="Country" />
+          <NavigationProperty Name="Type" Relationship="Self.FK_menu_Type" FromRole="menu" ToRole="Type" />
+          <NavigationProperty Name="OrderMenu" Relationship="Self.FK_OrderMenu_menu" FromRole="menu" ToRole="OrderMenu" />
+          <NavigationProperty Name="StopList" Relationship="Self.FK_StopList_menu" FromRole="menu" ToRole="StopList" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="IDorder" />
+          </Key>
+          <Property Name="IDorder" Type="Int32" Nullable="false" />
+          <Property Name="FullPrice" Type="Int32" />
+          <NavigationProperty Name="OrderMenu" Relationship="Self.FK_OrderMenu_Order" FromRole="Order" ToRole="OrderMenu" />
+          <NavigationProperty Name="Stol" Relationship="Self.FK_Stol_Order" FromRole="Order" ToRole="Stol" />
+        </EntityType>
+        <EntityType Name="OrderMenu">
+          <Key>
+            <PropertyRef Name="IDom" />
+          </Key>
+          <Property Name="IDorder" Type="Int32" Nullable="false" />
+          <Property Name="IDmenu" Type="Int32" Nullable="false" />
+          <Property Name="IDom" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="menu" Relationship="Self.FK_OrderMenu_menu" FromRole="OrderMenu" ToRole="menu" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_OrderMenu_Order" FromRole="OrderMenu" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Stol">
+          <Key>
+            <PropertyRef Name="IDstol" />
+          </Key>
+          <Property Name="IDstol" Type="Int32" Nullable="false" />
+          <Property Name="C_stol" Type="Int32" />
+          <Property Name="IDorder" Type="Int32" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Stol_Order" FromRole="Stol" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="StopList">
+          <Key>
+            <PropertyRef Name="IDst" />
+          </Key>
+          <Property Name="IDst" Type="Int32" Nullable="false" />
+          <Property Name="IDmenu" Type="Int32" />
+          <NavigationProperty Name="menu" Relationship="Self.FK_StopList_menu" FromRole="StopList" ToRole="menu" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="IDtype" />
+          </Key>
+          <Property Name="IDtype" Type="Int32" Nullable="false" />
+          <Property Name="NameType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="menu" Relationship="Self.FK_menu_Type" FromRole="Type" ToRole="menu" />
+        </EntityType>
+        <Association Name="FK_menu_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="menu" Type="Self.menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="IDcountry" />
+            </Principal>
+            <Dependent Role="menu">
+              <PropertyRef Name="IDcountry" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_menu_Type">
+          <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+          <End Role="menu" Type="Self.menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="IDtype" />
+            </Principal>
+            <Dependent Role="menu">
+              <PropertyRef Name="IDtype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderMenu_menu">
+          <End Role="menu" Type="Self.menu" Multiplicity="1" />
+          <End Role="OrderMenu" Type="Self.OrderMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="menu">
+              <PropertyRef Name="IDmenu" />
+            </Principal>
+            <Dependent Role="OrderMenu">
+              <PropertyRef Name="IDmenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StopList_menu">
+          <End Role="menu" Type="Self.menu" Multiplicity="0..1" />
+          <End Role="StopList" Type="Self.StopList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="menu">
+              <PropertyRef Name="IDmenu" />
+            </Principal>
+            <Dependent Role="StopList">
+              <PropertyRef Name="IDmenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderMenu_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderMenu" Type="Self.OrderMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="IDorder" />
+            </Principal>
+            <Dependent Role="OrderMenu">
+              <PropertyRef Name="IDorder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stol_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="Stol" Type="Self.Stol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="IDorder" />
+            </Principal>
+            <Dependent Role="Stol">
+              <PropertyRef Name="IDorder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OnOnOwnEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Country" EntityType="Self.Country" />
+          <EntitySet Name="menu" EntityType="Self.menu" />
+          <EntitySet Name="Order" EntityType="Self.Order" />
+          <EntitySet Name="OrderMenu" EntityType="Self.OrderMenu" />
+          <EntitySet Name="Stol" EntityType="Self.Stol" />
+          <EntitySet Name="StopList" EntityType="Self.StopList" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Type" EntityType="Self.Type" />
+          <AssociationSet Name="FK_menu_Country" Association="Self.FK_menu_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="menu" EntitySet="menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_menu_Type" Association="Self.FK_menu_Type">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="menu" EntitySet="menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderMenu_menu" Association="Self.FK_OrderMenu_menu">
+            <End Role="menu" EntitySet="menu" />
+            <End Role="OrderMenu" EntitySet="OrderMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StopList_menu" Association="Self.FK_StopList_menu">
+            <End Role="menu" EntitySet="menu" />
+            <End Role="StopList" EntitySet="StopList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderMenu_Order" Association="Self.FK_OrderMenu_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderMenu" EntitySet="OrderMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stol_Order" Association="Self.FK_Stol_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Stol" EntitySet="Stol" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище OnOnOwnModelContainer" CdmEntityContainer="OnOnOwnEntities">
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="OnOnOwnModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="IDcountry" ColumnName="IDcountry" />
+                <ScalarProperty Name="NameCountry" ColumnName="NameCountry" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="menu">
+            <EntityTypeMapping TypeName="OnOnOwnModel.menu">
+              <MappingFragment StoreEntitySet="menu">
+                <ScalarProperty Name="IDmenu" ColumnName="IDmenu" />
+                <ScalarProperty Name="NameDish" ColumnName="NameDish" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="IDcountry" ColumnName="IDcountry" />
+                <ScalarProperty Name="IDtype" ColumnName="IDtype" />
+                <ScalarProperty Name="img" ColumnName="img" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="OnOnOwnModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="IDorder" ColumnName="IDorder" />
+                <ScalarProperty Name="FullPrice" ColumnName="FullPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderMenu">
+            <EntityTypeMapping TypeName="OnOnOwnModel.OrderMenu">
+              <MappingFragment StoreEntitySet="OrderMenu">
+                <ScalarProperty Name="IDorder" ColumnName="IDorder" />
+                <ScalarProperty Name="IDmenu" ColumnName="IDmenu" />
+                <ScalarProperty Name="IDom" ColumnName="IDom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stol">
+            <EntityTypeMapping TypeName="OnOnOwnModel.Stol">
+              <MappingFragment StoreEntitySet="Stol">
+                <ScalarProperty Name="IDstol" ColumnName="IDstol" />
+                <ScalarProperty Name="C_stol" ColumnName="№stol" />
+                <ScalarProperty Name="IDorder" ColumnName="IDorder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StopList">
+            <EntityTypeMapping TypeName="OnOnOwnModel.StopList">
+              <MappingFragment StoreEntitySet="StopList">
+                <ScalarProperty Name="IDst" ColumnName="IDst" />
+                <ScalarProperty Name="IDmenu" ColumnName="IDmenu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="OnOnOwnModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type">
+            <EntityTypeMapping TypeName="OnOnOwnModel.Type">
+              <MappingFragment StoreEntitySet="Type">
+                <ScalarProperty Name="IDtype" ColumnName="IDtype" />
+                <ScalarProperty Name="NameType" ColumnName="NameType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
