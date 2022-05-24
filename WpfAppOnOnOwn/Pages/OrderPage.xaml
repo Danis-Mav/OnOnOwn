@@ -32,10 +32,29 @@
             <ListView  x:Name="prod" ItemsSource="{Binding OrderMenu}" Height="600">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="№" Width="30" DisplayMemberBinding="{Binding IDom}" />
-                        <GridViewColumn Header="Название блюда" Width="200" DisplayMemberBinding="{Binding menu.NameDish}"/>
-                        <GridViewColumn Header="Тип" Width="100" DisplayMemberBinding="{Binding Type.NameType}"/>
-                        <GridViewColumn Header="Цена" Width="40" DisplayMemberBinding="{Binding menu.Price}"/>
+                        <GridViewColumn Width="30"  Header="№" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontSize="15" TextWrapping="WrapWithOverflow"  Text="{Binding IDom}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="300"  Header="Название блюда" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontSize="20" TextWrapping="WrapWithOverflow"  Text="{Binding menu.NameDish}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Width="300"  Header="Цена" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontSize="25" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow"  Text="{Binding menu.Price}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                
                     </GridView>
                 </ListView.View>
             </ListView>
