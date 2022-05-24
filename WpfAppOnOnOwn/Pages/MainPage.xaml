@@ -10,12 +10,14 @@
 
     <Grid>
 
-        <Button FontSize="20" 
+        <Button FontSize="30" 
                 Content="Сделать заказ" 
                 Height="100" 
-                Width="300" 
+                Width="300"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
                 Background="Aquamarine"
-                Margin="0,100,0,0" Click="Button_Click"
+                Click="Button_Click"
                 />
         
         <Button FontSize="10" 

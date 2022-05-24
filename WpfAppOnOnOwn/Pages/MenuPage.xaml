@@ -50,7 +50,7 @@
                         <GridViewColumn Header="Цена" Width="40" DisplayMemberBinding="{Binding Price}"/>
                         <!--<GridViewColumn Header="Описание" Width="500" DisplayMemberBinding="{Binding description}" ></GridViewColumn>-->
                         
-                        <GridViewColumn Width="300"  Header="Стобец 1" >
+                        <GridViewColumn Width="300"  Header="Описание" >
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock TextWrapping="WrapWithOverflow"  Text="{Binding description}"></TextBlock>

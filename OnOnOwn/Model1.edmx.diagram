@@ -12,7 +12,7 @@
         <EntityTypeShape EntityType="OnOnOwnModel.Stol" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="OnOnOwnModel.StopList" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
         <EntityTypeShape EntityType="OnOnOwnModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnOnOwnModel.Type" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnOnOwnModel.Type" Width="1.5" PointX="4.625" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="OnOnOwnModel.FK_menu_Country" ManuallyRouted="false" />
         <AssociationConnector Association="OnOnOwnModel.FK_menu_Type" ManuallyRouted="false" />
         <AssociationConnector Association="OnOnOwnModel.FK_OrderMenu_menu" ManuallyRouted="false" />
