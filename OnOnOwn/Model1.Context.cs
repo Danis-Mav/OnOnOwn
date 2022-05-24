@@ -13,10 +13,10 @@ namespace OnOnOwn
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class OnOnOwnEntities : DbContext
+    public partial class OnOnOwnEntities2 : DbContext
     {
-        public OnOnOwnEntities()
-            : base("name=OnOnOwnEntities")
+        public OnOnOwnEntities2()
+            : base("name=OnOnOwnEntities2")
         {
         }
     

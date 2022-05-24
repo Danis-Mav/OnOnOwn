@@ -21,36 +21,90 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="4*"/>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
 
+        <StackPanel Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="2" Height="200" >
+            <Button Content="Все блюда" FontSize="20" Height="120" Background="#99ff99" Click="Button_allDish"/>
+        </StackPanel>
 
-        <ListView x:Name="prod" ScrollViewer.VerticalScrollBarVisibility="Visible" ItemsSource="{Binding menu}" Grid.Column="0" Grid.ColumnSpan="8" Grid.Row="1" Grid.RowSpan="2" Margin="0,0,0,6">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="№" DisplayMemberBinding="{Binding IDmenu}"/>
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="6" Grid.Row="1" Height="600" >
+            <ListView  x:Name="prod" ItemsSource="{Binding menu}" Height="600">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="№" Width="30" DisplayMemberBinding="{Binding IDmenu}" />
 
-                    <GridViewColumn Header="Фото" Width="200">
-                        <GridViewColumn.CellTemplate>
-                        <DataTemplate>
-                                <Image Source="{Binding img}" Height="200" Margin="10"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                        <GridViewColumn Header="Фото" Width="200">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding img}" Height="200" Margin="10"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
 
-                    <GridViewColumn Header="Название блюда" Width="200" DisplayMemberBinding="{Binding NameDish}"/>
-                    <GridViewColumn Header="Страна" Width="100" DisplayMemberBinding="{Binding Country.NameCountry}"/>
-                    <GridViewColumn Header="Тип" Width="100" DisplayMemberBinding="{Binding Type.NameType}"/>
-                    <GridViewColumn Header="Цена" Width="100" DisplayMemberBinding="{Binding Price}"/>
+                        <GridViewColumn Header="Название блюда" Width="200" DisplayMemberBinding="{Binding NameDish}"/>
+                        <GridViewColumn Header="Страна" Width="100" DisplayMemberBinding="{Binding Country.NameCountry}"/>
+                        <GridViewColumn Header="Тип" Width="100" DisplayMemberBinding="{Binding Type.NameType}"/>
+                        <GridViewColumn Header="Цена" Width="40" DisplayMemberBinding="{Binding Price}"/>
+                        <!--<GridViewColumn Header="Описание" Width="500" DisplayMemberBinding="{Binding description}" ></GridViewColumn>-->
+                        
+                        <GridViewColumn Width="300"  Header="Стобец 1" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="WrapWithOverflow"  Text="{Binding description}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                            
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
 
-                </GridView>
-            </ListView.View>
-        </ListView>
-            <!--<TextBlock x:Name="tb_count" Grid.Column="1" Grid.Row="1" FontSize="16" Width="60" VerticalAlignment="Top" TextAlignment="Center" HorizontalAlignment="Center"/>-->
-        <Button x:Name="add" Grid.Column="0" Grid.Row="0" Visibility="Hidden" Content="Button" HorizontalAlignment="Left" Margin="10,0,0,0"  VerticalAlignment="Center" Height="38" Width="105"/>
+        <StackPanel Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="2" Height="600">
+            <Button Content="Горячие блюда" FontSize="20" Height="120" Background="#99ff99" Click="Button_hotDish"/>
+            <Button Content="Холодные блюда" FontSize="20" Height="120" Background="#99ff99" Click="Button_coldDish"/>
+            <Button Content="Закуски" FontSize="20" Height="120" Background="#99ff99" Click="Button_Snacks"/>
+            <Button Content="Напитки" FontSize="20" Height="120" Background="#99ff99" Click="Button_Salad"/>
+            <Button Content="Салаты" FontSize="20" Height="120" Background="#99ff99" Click="Button_Drinks"/>
+        </StackPanel>
+        <!--Admin-->
+        <Button Content="Добавить в заказ" 
+                Background="Aqua"
+                FontSize="15"
+                x:Name="ToOrder" 
+                Grid.Column="4" 
+                Grid.Row="2" 
+                HorizontalAlignment="Left" 
+                Margin="0,0,10,0"  
+                VerticalAlignment="Center" 
+                Height="50" 
+                Width="150" 
+                Click="Button_AddDish"/>
+        <Button Content="Перейти к заказу" 
+                FontSize="20"
+                Background="Aqua"
+                x:Name="GoOrder" 
+                Grid.Column="6" 
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Bottom" 
+                Height="70" 
+                Width="300" 
+                Margin="0,20,0,10" Click="GoOrder_Click"/>
+        <Button x:Name="add" 
+                Grid.Column="0" 
+                Grid.Row="0" 
+                Visibility="Hidden" 
+                Content="Button" 
+                HorizontalAlignment="Left" 
+                Margin="10,0,0,0"  
+                VerticalAlignment="Center" 
+                Height="38" 
+                Width="105"/>
     </Grid>
 
 </Page>

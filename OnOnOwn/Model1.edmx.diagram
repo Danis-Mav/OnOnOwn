@@ -4,21 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="dff105c958524c0095b6923a701f6191" Name="Diagram1">
+      <Diagram DiagramId="634bcbaf0d7243148196c77ab3e8b6e1" Name="Diagram1">
         <EntityTypeShape EntityType="OnOnOwnModel.Country" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnOnOwnModel.menu" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnOnOwnModel.menu" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="OnOnOwnModel.Order" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="OnOnOwnModel.OrderMenu" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnOnOwnModel.Stol" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnOnOwnModel.StopList" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnOnOwnModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnOnOwnModel.Stol" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnOnOwnModel.StopList" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnOnOwnModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="OnOnOwnModel.Type" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="OnOnOwnModel.FK_menu_Country" ManuallyRouted="false" />
         <AssociationConnector Association="OnOnOwnModel.FK_menu_Type" ManuallyRouted="false" />
         <AssociationConnector Association="OnOnOwnModel.FK_OrderMenu_menu" ManuallyRouted="false" />
         <AssociationConnector Association="OnOnOwnModel.FK_StopList_menu" ManuallyRouted="false" />
+        <AssociationConnector Association="OnOnOwnModel.FK_Order_Stol" ManuallyRouted="false" />
         <AssociationConnector Association="OnOnOwnModel.FK_OrderMenu_Order" ManuallyRouted="false" />
-        <AssociationConnector Association="OnOnOwnModel.FK_Stol_Order" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -18,15 +18,13 @@ namespace OnOnOwn
         public Order()
         {
             this.OrderMenu = new HashSet<OrderMenu>();
-            this.Stol = new HashSet<Stol>();
         }
     
-        public int IDorder { get; set; }
-        public Nullable<int> FullPrice { get; set; }
+        public int idOrder { get; set; }
+        public Nullable<int> idStol { get; set; }
     
+        public virtual Stol Stol { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderMenu> OrderMenu { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Stol> Stol { get; set; }
     }
 }

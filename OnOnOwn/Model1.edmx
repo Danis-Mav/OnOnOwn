@@ -22,21 +22,23 @@
           <Property Name="IDcountry" Type="int" />
           <Property Name="IDtype" Type="int" />
           <Property Name="img" Type="varbinary(max)" />
+          <Property Name="description" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
-            <PropertyRef Name="IDorder" />
+            <PropertyRef Name="idOrder" />
           </Key>
-          <Property Name="IDorder" Type="int" Nullable="false" />
-          <Property Name="FullPrice" Type="int" />
+          <Property Name="idOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idStol" Type="int" />
         </EntityType>
         <EntityType Name="OrderMenu">
           <Key>
             <PropertyRef Name="IDom" />
           </Key>
-          <Property Name="IDorder" Type="int" Nullable="false" />
-          <Property Name="IDmenu" Type="int" Nullable="false" />
-          <Property Name="IDom" Type="int" Nullable="false" />
+          <Property Name="IDom" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDorder" Type="int" />
+          <Property Name="IDMenu" Type="int" />
+          <Property Name="price" Type="int" />
         </EntityType>
         <EntityType Name="Stol">
           <Key>
@@ -44,7 +46,6 @@
           </Key>
           <Property Name="IDstol" Type="int" Nullable="false" />
           <Property Name="№stol" Type="int" />
-          <Property Name="IDorder" Type="int" />
         </EntityType>
         <EntityType Name="StopList">
           <Key>
@@ -94,38 +95,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Order_Stol">
+          <End Role="Stol" Type="Self.Stol" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stol">
+              <PropertyRef Name="IDstol" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="idStol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_OrderMenu_menu">
-          <End Role="menu" Type="Self.menu" Multiplicity="1" />
+          <End Role="menu" Type="Self.menu" Multiplicity="0..1" />
           <End Role="OrderMenu" Type="Self.OrderMenu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="menu">
               <PropertyRef Name="IDmenu" />
             </Principal>
             <Dependent Role="OrderMenu">
-              <PropertyRef Name="IDmenu" />
+              <PropertyRef Name="IDMenu" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_OrderMenu_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
           <End Role="OrderMenu" Type="Self.OrderMenu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Order">
-              <PropertyRef Name="IDorder" />
+              <PropertyRef Name="idOrder" />
             </Principal>
             <Dependent Role="OrderMenu">
-              <PropertyRef Name="IDorder" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Stol_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
-          <End Role="Stol" Type="Self.Stol" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="IDorder" />
-            </Principal>
-            <Dependent Role="Stol">
               <PropertyRef Name="IDorder" />
             </Dependent>
           </ReferentialConstraint>
@@ -159,6 +160,10 @@
             <End Role="Type" EntitySet="Type" />
             <End Role="menu" EntitySet="menu" />
           </AssociationSet>
+          <AssociationSet Name="FK_Order_Stol" Association="Self.FK_Order_Stol">
+            <End Role="Stol" EntitySet="Stol" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
           <AssociationSet Name="FK_OrderMenu_menu" Association="Self.FK_OrderMenu_menu">
             <End Role="menu" EntitySet="menu" />
             <End Role="OrderMenu" EntitySet="OrderMenu" />
@@ -166,10 +171,6 @@
           <AssociationSet Name="FK_OrderMenu_Order" Association="Self.FK_OrderMenu_Order">
             <End Role="Order" EntitySet="Order" />
             <End Role="OrderMenu" EntitySet="OrderMenu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Stol_Order" Association="Self.FK_Stol_Order">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="Stol" EntitySet="Stol" />
           </AssociationSet>
           <AssociationSet Name="FK_StopList_menu" Association="Self.FK_StopList_menu">
             <End Role="menu" EntitySet="menu" />
@@ -199,6 +200,7 @@
           <Property Name="IDcountry" Type="Int32" />
           <Property Name="IDtype" Type="Int32" />
           <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Country" Relationship="Self.FK_menu_Country" FromRole="menu" ToRole="Country" />
           <NavigationProperty Name="Type" Relationship="Self.FK_menu_Type" FromRole="menu" ToRole="Type" />
           <NavigationProperty Name="OrderMenu" Relationship="Self.FK_OrderMenu_menu" FromRole="menu" ToRole="OrderMenu" />
@@ -206,20 +208,21 @@
         </EntityType>
         <EntityType Name="Order">
           <Key>
-            <PropertyRef Name="IDorder" />
+            <PropertyRef Name="idOrder" />
           </Key>
-          <Property Name="IDorder" Type="Int32" Nullable="false" />
-          <Property Name="FullPrice" Type="Int32" />
+          <Property Name="idOrder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idStol" Type="Int32" />
+          <NavigationProperty Name="Stol" Relationship="Self.FK_Order_Stol" FromRole="Order" ToRole="Stol" />
           <NavigationProperty Name="OrderMenu" Relationship="Self.FK_OrderMenu_Order" FromRole="Order" ToRole="OrderMenu" />
-          <NavigationProperty Name="Stol" Relationship="Self.FK_Stol_Order" FromRole="Order" ToRole="Stol" />
         </EntityType>
         <EntityType Name="OrderMenu">
           <Key>
             <PropertyRef Name="IDom" />
           </Key>
-          <Property Name="IDorder" Type="Int32" Nullable="false" />
-          <Property Name="IDmenu" Type="Int32" Nullable="false" />
-          <Property Name="IDom" Type="Int32" Nullable="false" />
+          <Property Name="IDom" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDorder" Type="Int32" />
+          <Property Name="IDMenu" Type="Int32" />
+          <Property Name="price" Type="Int32" />
           <NavigationProperty Name="menu" Relationship="Self.FK_OrderMenu_menu" FromRole="OrderMenu" ToRole="menu" />
           <NavigationProperty Name="Order" Relationship="Self.FK_OrderMenu_Order" FromRole="OrderMenu" ToRole="Order" />
         </EntityType>
@@ -229,8 +232,7 @@
           </Key>
           <Property Name="IDstol" Type="Int32" Nullable="false" />
           <Property Name="C_stol" Type="Int32" />
-          <Property Name="IDorder" Type="Int32" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Stol_Order" FromRole="Stol" ToRole="Order" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Stol" FromRole="Stol" ToRole="Order" />
         </EntityType>
         <EntityType Name="StopList">
           <Key>
@@ -283,14 +285,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_OrderMenu_menu">
-          <End Role="menu" Type="Self.menu" Multiplicity="1" />
+          <End Role="menu" Type="Self.menu" Multiplicity="0..1" />
           <End Role="OrderMenu" Type="Self.OrderMenu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="menu">
               <PropertyRef Name="IDmenu" />
             </Principal>
             <Dependent Role="OrderMenu">
-              <PropertyRef Name="IDmenu" />
+              <PropertyRef Name="IDMenu" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -306,31 +308,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Order_Stol">
+          <End Role="Stol" Type="Self.Stol" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stol">
+              <PropertyRef Name="IDstol" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="idStol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_OrderMenu_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
           <End Role="OrderMenu" Type="Self.OrderMenu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Order">
-              <PropertyRef Name="IDorder" />
+              <PropertyRef Name="idOrder" />
             </Principal>
             <Dependent Role="OrderMenu">
               <PropertyRef Name="IDorder" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Stol_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
-          <End Role="Stol" Type="Self.Stol" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="IDorder" />
-            </Principal>
-            <Dependent Role="Stol">
-              <PropertyRef Name="IDorder" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="OnOnOwnEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="OnOnOwnEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Country" EntityType="Self.Country" />
           <EntitySet Name="menu" EntityType="Self.menu" />
           <EntitySet Name="Order" EntityType="Self.Order" />
@@ -355,13 +357,13 @@
             <End Role="menu" EntitySet="menu" />
             <End Role="StopList" EntitySet="StopList" />
           </AssociationSet>
+          <AssociationSet Name="FK_Order_Stol" Association="Self.FK_Order_Stol">
+            <End Role="Stol" EntitySet="Stol" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
           <AssociationSet Name="FK_OrderMenu_Order" Association="Self.FK_OrderMenu_Order">
             <End Role="Order" EntitySet="Order" />
             <End Role="OrderMenu" EntitySet="OrderMenu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Stol_Order" Association="Self.FK_Stol_Order">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="Stol" EntitySet="Stol" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -369,7 +371,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище OnOnOwnModelContainer" CdmEntityContainer="OnOnOwnEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище OnOnOwnModelContainer" CdmEntityContainer="OnOnOwnEntities2">
           <EntitySetMapping Name="Country">
             <EntityTypeMapping TypeName="OnOnOwnModel.Country">
               <MappingFragment StoreEntitySet="Country">
@@ -387,23 +389,25 @@
                 <ScalarProperty Name="IDcountry" ColumnName="IDcountry" />
                 <ScalarProperty Name="IDtype" ColumnName="IDtype" />
                 <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="description" ColumnName="description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Order">
             <EntityTypeMapping TypeName="OnOnOwnModel.Order">
               <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="IDorder" ColumnName="IDorder" />
-                <ScalarProperty Name="FullPrice" ColumnName="FullPrice" />
+                <ScalarProperty Name="idOrder" ColumnName="idOrder" />
+                <ScalarProperty Name="idStol" ColumnName="idStol" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderMenu">
             <EntityTypeMapping TypeName="OnOnOwnModel.OrderMenu">
               <MappingFragment StoreEntitySet="OrderMenu">
-                <ScalarProperty Name="IDorder" ColumnName="IDorder" />
-                <ScalarProperty Name="IDmenu" ColumnName="IDmenu" />
                 <ScalarProperty Name="IDom" ColumnName="IDom" />
+                <ScalarProperty Name="IDorder" ColumnName="IDorder" />
+                <ScalarProperty Name="IDMenu" ColumnName="IDMenu" />
+                <ScalarProperty Name="price" ColumnName="price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -412,7 +416,6 @@
               <MappingFragment StoreEntitySet="Stol">
                 <ScalarProperty Name="IDstol" ColumnName="IDstol" />
                 <ScalarProperty Name="C_stol" ColumnName="№stol" />
-                <ScalarProperty Name="IDorder" ColumnName="IDorder" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

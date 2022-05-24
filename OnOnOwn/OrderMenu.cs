@@ -14,9 +14,10 @@ namespace OnOnOwn
     
     public partial class OrderMenu
     {
-        public int IDorder { get; set; }
-        public int IDmenu { get; set; }
         public int IDom { get; set; }
+        public Nullable<int> IDorder { get; set; }
+        public Nullable<int> IDMenu { get; set; }
+        public Nullable<int> price { get; set; }
     
         public virtual menu menu { get; set; }
         public virtual Order Order { get; set; }

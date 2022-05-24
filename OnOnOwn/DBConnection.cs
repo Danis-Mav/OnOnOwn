@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WpfAppOnOnOwn
+namespace OnOnOwn
 {
-    internal class DBconnection
+    public static class DBConnection
     {
-        public static OnOnOwnEntities connection = new OnOnOwnEntities();
+        public static OnOnOwnEntities2 connection = new OnOnOwnEntities2();
     }
 }
