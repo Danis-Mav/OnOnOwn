@@ -81,7 +81,6 @@
             <Button Content="Напитки" FontSize="20" Height="120" Background="#99ff99" Click="Button_Salad"/>
             <Button Content="Салаты" FontSize="20" Height="120" Background="#99ff99" Click="Button_Drinks"/>
         </StackPanel>
-        <!--Admin-->
         <Button Content="Добавить в заказ" 
                 Background="Aqua"
                 FontSize="15"

@@ -28,6 +28,7 @@ namespace WpfAppOnOnOwn.Pages
             InitializeComponent();
             menu = new ObservableCollection<menu>(DBConnection.connection.menu.ToList());
             this.DataContext = this;
+
             if(isAdmin==true)
             { 
                 ToOrderDish.Visibility = Visibility.Hidden;
@@ -111,7 +112,7 @@ namespace WpfAppOnOnOwn.Pages
 
         private void Orders_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new AdmOrders());
         }
 
         private void StopList_Click(object sender, RoutedEventArgs e)

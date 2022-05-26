@@ -58,5 +58,10 @@ namespace WpfAppOnOnOwn.Pages
             DBConnection.connection.SaveChanges();
             MessageBox.Show("Заказ сделан");
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }
