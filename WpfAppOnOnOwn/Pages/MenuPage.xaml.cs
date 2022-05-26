@@ -28,9 +28,17 @@ namespace WpfAppOnOnOwn.Pages
             InitializeComponent();
             menu = new ObservableCollection<menu>(DBConnection.connection.menu.ToList());
             this.DataContext = this;
-            if(isAdmin == true)
-            {
-                add.Visibility = Visibility.Visible;
+            if(isAdmin==true)
+            { 
+                ToOrderDish.Visibility = Visibility.Hidden;
+                GoOrder.Visibility = Visibility.Hidden;
+                GoOrder.Visibility = Visibility.Hidden;
+                AddDish.Visibility = Visibility.Visible;
+                DeleteDish.Visibility = Visibility.Visible;
+                Orders.Visibility = Visibility.Visible;
+                StopList.Visibility = Visibility.Visible;
+                RedStopList.Visibility = Visibility.Visible;
+
             }
         }
 
@@ -61,7 +69,7 @@ namespace WpfAppOnOnOwn.Pages
             prod.ItemsSource = new ObservableCollection<menu>(DBConnection.connection.menu.ToList());
         }
 
-        private void Button_AddDish(object sender, RoutedEventArgs e)
+        private void ToOrderDish_Button(object sender, RoutedEventArgs e)
         {
             if (prod.SelectedItem != null)
             {
@@ -80,9 +88,45 @@ namespace WpfAppOnOnOwn.Pages
             else MessageBox.Show("ЛОХ");
         }
 
-        private void GoOrder_Click(object sender, RoutedEventArgs e)
+
+        private void GoOrder_Button(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new OrderPage());
+        }
+
+        private void AddDish_Click(object sender, RoutedEventArgs e)
+        {
+            //NavigationService.Navigate(new NewEditPage());
+        }
+
+        private void DeleteDish_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RedDish_Click(object sender, RoutedEventArgs e)
+        {
+            //NavigationService.Navigate(new NewEditPage());
+        }
+
+        private void Orders_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void StopList_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RedStopList_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

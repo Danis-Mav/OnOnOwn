@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище OnOnOwnModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище OnOnOwnModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Country">
           <Key>
             <PropertyRef Name="IDcountry" />
@@ -30,6 +30,7 @@
           </Key>
           <Property Name="idOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idStol" Type="int" />
+          <Property Name="FullPrice" Type="int" />
         </EntityType>
         <EntityType Name="OrderMenu">
           <Key>
@@ -45,14 +46,20 @@
             <PropertyRef Name="IDstol" />
           </Key>
           <Property Name="IDstol" Type="int" Nullable="false" />
-          <Property Name="№stol" Type="int" />
+          <Property Name="NameStol" Type="int" />
         </EntityType>
         <EntityType Name="StopList">
           <Key>
             <PropertyRef Name="IDst" />
           </Key>
-          <Property Name="IDst" Type="int" Nullable="false" />
+          <Property Name="IDst" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDmenu" Type="int" />
+          <Property Name="NameDish" Type="nchar" MaxLength="10" />
+          <Property Name="Price" Type="int" />
+          <Property Name="IDcountry" Type="int" />
+          <Property Name="img" Type="varbinary(max)" />
+          <Property Name="description" Type="nvarchar" MaxLength="200" />
+          <Property Name="IDtype" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -177,8 +184,7 @@
             <End Role="StopList" EntitySet="StopList" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="OnOnOwnModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -212,6 +218,7 @@
           </Key>
           <Property Name="idOrder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idStol" Type="Int32" />
+          <Property Name="FullPrice" Type="Int32" />
           <NavigationProperty Name="Stol" Relationship="Self.FK_Order_Stol" FromRole="Order" ToRole="Stol" />
           <NavigationProperty Name="OrderMenu" Relationship="Self.FK_OrderMenu_Order" FromRole="Order" ToRole="OrderMenu" />
         </EntityType>
@@ -231,15 +238,21 @@
             <PropertyRef Name="IDstol" />
           </Key>
           <Property Name="IDstol" Type="Int32" Nullable="false" />
-          <Property Name="C_stol" Type="Int32" />
+          <Property Name="NameStol" Type="Int32" />
           <NavigationProperty Name="Order" Relationship="Self.FK_Order_Stol" FromRole="Stol" ToRole="Order" />
         </EntityType>
         <EntityType Name="StopList">
           <Key>
             <PropertyRef Name="IDst" />
           </Key>
-          <Property Name="IDst" Type="Int32" Nullable="false" />
+          <Property Name="IDst" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDmenu" Type="Int32" />
+          <Property Name="NameDish" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="IDcountry" Type="Int32" />
+          <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IDtype" Type="Int32" />
           <NavigationProperty Name="menu" Relationship="Self.FK_StopList_menu" FromRole="StopList" ToRole="menu" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -398,6 +411,7 @@
               <MappingFragment StoreEntitySet="Order">
                 <ScalarProperty Name="idOrder" ColumnName="idOrder" />
                 <ScalarProperty Name="idStol" ColumnName="idStol" />
+                <ScalarProperty Name="FullPrice" ColumnName="FullPrice" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -415,7 +429,7 @@
             <EntityTypeMapping TypeName="OnOnOwnModel.Stol">
               <MappingFragment StoreEntitySet="Stol">
                 <ScalarProperty Name="IDstol" ColumnName="IDstol" />
-                <ScalarProperty Name="C_stol" ColumnName="№stol" />
+                <ScalarProperty Name="NameStol" ColumnName="NameStol" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -424,6 +438,12 @@
               <MappingFragment StoreEntitySet="StopList">
                 <ScalarProperty Name="IDst" ColumnName="IDst" />
                 <ScalarProperty Name="IDmenu" ColumnName="IDmenu" />
+                <ScalarProperty Name="NameDish" ColumnName="NameDish" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="IDcountry" ColumnName="IDcountry" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="IDtype" ColumnName="IDtype" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

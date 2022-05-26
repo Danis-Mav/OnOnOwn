@@ -26,6 +26,18 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+        <Button Content="Назад" 
+                FontSize="15"
+                Background="Aqua"
+                Grid.Column="0" 
+                Grid.Row="0"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Height="50" 
+                Width="150"  
+                Visibility="Visible"
+                Margin="0,20,0,10" 
+                Click="Back_Click" />
         <StackPanel Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="2" Height="200" >
             <Button Content="Все блюда" FontSize="20" Height="120" Background="#99ff99" Click="Button_allDish"/>
         </StackPanel>
@@ -48,8 +60,7 @@
                         <GridViewColumn Header="Страна" Width="100" DisplayMemberBinding="{Binding Country.NameCountry}"/>
                         <GridViewColumn Header="Тип" Width="100" DisplayMemberBinding="{Binding Type.NameType}"/>
                         <GridViewColumn Header="Цена" Width="40" DisplayMemberBinding="{Binding Price}"/>
-                        <!--<GridViewColumn Header="Описание" Width="500" DisplayMemberBinding="{Binding description}" ></GridViewColumn>-->
-                        
+
                         <GridViewColumn Width="300"  Header="Описание" >
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
@@ -74,7 +85,7 @@
         <Button Content="Добавить в заказ" 
                 Background="Aqua"
                 FontSize="15"
-                x:Name="ToOrder" 
+                x:Name="ToOrderDish" 
                 Grid.Column="4" 
                 Grid.Row="2" 
                 HorizontalAlignment="Left" 
@@ -82,7 +93,8 @@
                 VerticalAlignment="Center" 
                 Height="50" 
                 Width="150" 
-                Click="Button_AddDish"/>
+                Visibility="Visible"
+                Click="ToOrderDish_Button"/>
         <Button Content="Перейти к заказу" 
                 FontSize="20"
                 Background="Aqua"
@@ -94,17 +106,78 @@
                 VerticalAlignment="Bottom" 
                 Height="70" 
                 Width="300" 
-                Margin="0,20,0,10" Click="GoOrder_Click"/>
-        <Button x:Name="add" 
-                Grid.Column="0" 
-                Grid.Row="0" 
-                Visibility="Hidden" 
-                Content="Button" 
-                HorizontalAlignment="Left" 
-                Margin="10,0,0,0"  
-                VerticalAlignment="Center" 
-                Height="38" 
-                Width="105"/>
+                Visibility="Visible"
+                Margin="0,20,0,10" 
+                Click="GoOrder_Button"/>
+        <!--Admin-->
+        <Button Content="Добавить блюдо" 
+                FontSize="15"
+                Background="Aqua"
+                x:Name="AddDish" 
+                Grid.Column="5" 
+                Grid.Row="2"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Bottom" 
+                Height="50" 
+                Width="150" 
+                Visibility="Hidden"
+                Margin="0,20,0,10" 
+                Click="AddDish_Click"/>
+        <Button Content="Удалить блюдо" 
+                FontSize="15"
+                Background="Aqua"
+                x:Name="DeleteDish" 
+                Grid.Column="3" 
+                Grid.Row="2"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Bottom" 
+                Height="50" 
+                Width="150"  
+                Visibility="Hidden"
+                Margin="0,20,0,10" 
+                Click="DeleteDish_Click"/>
+        <Button Content="Заказы" 
+                FontSize="20"
+                Background="Aqua"
+                x:Name="Orders" 
+                Grid.Column="6" 
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Bottom" 
+                Height="70" 
+                Width="300" 
+                Visibility="Hidden"
+                Margin="0,20,0,10" 
+                Click="Orders_Click"/>
+        <Button Content="Стоп лист" 
+                FontSize="20"
+                Background="Aqua"
+                x:Name="StopList" 
+                Grid.Column="3" 
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Bottom" 
+                Height="70" 
+                Width="300" 
+                Visibility="Hidden"
+                Margin="0,20,0,10" 
+                Click="StopList_Click"/>
+        <Button Content="Изменить стоп лист" 
+                FontSize="20"
+                Background="Aqua"
+                x:Name="RedStopList" 
+                Grid.Column="3" 
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Height="70" 
+                Width="300" 
+                Visibility="Hidden"
+                Margin="0,30,0,10" 
+                Click="RedStopList_Click"/>
     </Grid>
 
 </Page>

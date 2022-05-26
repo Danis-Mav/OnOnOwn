@@ -22,9 +22,10 @@ namespace WpfAppOnOnOwn.Pages
     /// </summary>
     public partial class OrderPage : Page
     {
+        public static int blogNum { get; set; }
         public static ObservableCollection<OrderMenu> OrderMenu { get; set; }
         public static ObservableCollection<menu> menu { get; set; }
-        //public static ObservableCollection<Type> Type { get; set; }
+        public static ObservableCollection<Order> Order { get; set; }
         public OrderPage()
         {
             InitializeComponent();
@@ -32,8 +33,30 @@ namespace WpfAppOnOnOwn.Pages
             this.DataContext = this;
             menu = new ObservableCollection<menu>(DBConnection.connection.menu.ToList());
             this.DataContext = this;
-            //Type = new ObservableCollection<Type>(DBConnection.connection.Type.ToList());
-            //this.DataContext = this;
+            Order = new ObservableCollection<Order>(DBConnection.connection.Order.ToList());
+            this.DataContext = this;
+
+            var query = from r in OrderMenu.AsEnumerable()
+                        select r.price;
+
+            foreach (var i in query)
+            {
+                blogNum += (int)i;
+            }
+            Total.Content = blogNum;
+            this.DataContext = this;
+        }
+
+        private void DoOrder_Click(object sender, RoutedEventArgs e)
+        {
+            var a = new OrderMenu();
+            var b = new Order();
+            var c = new Stol();
+            b.FullPrice = blogNum;
+            b.idStol = c.NameStol;
+            DBConnection.connection.Order.Add(b);
+            DBConnection.connection.SaveChanges();
+            MessageBox.Show("Заказ сделан");
         }
     }
 }

@@ -16,6 +16,12 @@ namespace OnOnOwn
     {
         public int IDst { get; set; }
         public Nullable<int> IDmenu { get; set; }
+        public string NameDish { get; set; }
+        public Nullable<int> Price { get; set; }
+        public Nullable<int> IDcountry { get; set; }
+        public byte[] img { get; set; }
+        public string description { get; set; }
+        public Nullable<int> IDtype { get; set; }
     
         public virtual menu menu { get; set; }
     }
