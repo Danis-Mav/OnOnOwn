@@ -41,11 +41,11 @@
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="1" Height="600" >
-            <ListView  x:Name="Orders" ItemsSource="{Binding Order}" Height="600">
+            <ListView  x:Name="Orders" ItemsSource="{Binding order}" Height="600">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="№" Width="100" DisplayMemberBinding="{Binding idOrder}"/>
-                        <GridViewColumn Header="№ Стола" Width="100" DisplayMemberBinding="{Binding Stol.NameStol}"/>
+                        <GridViewColumn Header="№ Стола" Width="100" DisplayMemberBinding="{Binding idStol}"/>
                         <GridViewColumn Header="Стоимость" Width="100" DisplayMemberBinding="{Binding FullPrice}"/>
 
                     </GridView>

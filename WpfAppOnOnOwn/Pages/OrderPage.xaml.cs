@@ -51,9 +51,8 @@ namespace WpfAppOnOnOwn.Pages
         {
             var a = new OrderMenu();
             var b = new Order();
-            var c = new Stol();
             b.FullPrice = blogNum;
-            b.idStol = c.NameStol;
+            b.idStol = 1;
             DBConnection.connection.Order.Add(b);
             DBConnection.connection.SaveChanges();
             MessageBox.Show("Заказ сделан");
