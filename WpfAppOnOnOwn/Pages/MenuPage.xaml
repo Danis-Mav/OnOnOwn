@@ -43,7 +43,7 @@
         </StackPanel>
 
         <StackPanel Grid.Column="0" Grid.ColumnSpan="6" Grid.Row="1" Height="600" >
-            <ListView  x:Name="prod" ItemsSource="{Binding menu}" Height="600">
+            <ListView  x:Name="prod" ItemsSource="{Binding menu2show}" Height="600" SelectionChanged="prod_SelectionChanged">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="№" Width="30" DisplayMemberBinding="{Binding IDmenu}" />
@@ -122,10 +122,10 @@
                 Visibility="Hidden"
                 Margin="0,20,0,10" 
                 Click="AddDish_Click"/>
-        <Button Content="Удалить блюдо" 
+        <Button Content="Редактировать блюдо" 
                 FontSize="15"
                 Background="Aqua"
-                x:Name="DeleteDish" 
+                x:Name="RedDish" 
                 Grid.Column="3" 
                 Grid.Row="2"
                 HorizontalAlignment="Center" 
@@ -134,7 +134,7 @@
                 Width="150"  
                 Visibility="Hidden"
                 Margin="0,20,0,10" 
-                Click="DeleteDish_Click"/>
+                Click="RedDish_Click"/>
         <Button Content="Заказы" 
                 FontSize="20"
                 Background="Aqua"
@@ -163,7 +163,7 @@
                 Visibility="Hidden"
                 Margin="0,20,0,10" 
                 Click="StopList_Click"/>
-        <Button Content="Изменить стоп лист" 
+        <Button Content="Добавить в стоп-лист" 
                 FontSize="20"
                 Background="Aqua"
                 x:Name="RedStopList" 

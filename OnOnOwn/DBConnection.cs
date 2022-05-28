@@ -8,6 +8,6 @@ namespace OnOnOwn
 {
     public static class DBConnection
     {
-        public static OnOnOwnEntities2 connection = new OnOnOwnEntities2();
+        public static OnOnOwnEntities1 connection = new OnOnOwnEntities1();
     }
 }

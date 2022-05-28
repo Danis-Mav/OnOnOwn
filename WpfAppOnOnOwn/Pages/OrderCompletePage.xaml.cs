@@ -18,23 +18,27 @@ using System.Windows.Shapes;
 namespace WpfAppOnOnOwn.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AdmOrders.xaml
+    /// Логика взаимодействия для OrderCompletePage.xaml
     /// </summary>
-    public partial class AdmOrders : Page
+    public partial class OrderCompletePage : Page
     {
-        public static ObservableCollection<Order> order { get; set; }
-        
-        public AdmOrders()
+        public static ObservableCollection<OrderMenu> order { get; set; }
+        public static List<OrderMenu> order2show { get; set; }
+        public OrderCompletePage()
         {
-            order = new ObservableCollection<Order>(DBConnection.connection.Order.ToList());
             this.DataContext = this;
+            foreach (var i in order)
+            {
+                if (i.IDorder == 1)
+                    order2show.Add(i);
+
+            }
             InitializeComponent();
         }
 
-        private void GotoOrder_Click(object sender, RoutedEventArgs e)
+        private void OrderComplete(object sender, RoutedEventArgs e)
         {
-            var n = (sender as ListView).SelectedItem as Order;
-            NavigationService.Navigate(new OrderCompletePage());
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

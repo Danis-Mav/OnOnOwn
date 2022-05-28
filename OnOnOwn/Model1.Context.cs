@@ -13,10 +13,10 @@ namespace OnOnOwn
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class OnOnOwnEntities2 : DbContext
+    public partial class OnOnOwnEntities1 : DbContext
     {
-        public OnOnOwnEntities2()
-            : base("name=OnOnOwnEntities2")
+        public OnOnOwnEntities1()
+            : base("name=OnOnOwnEntities1")
         {
         }
     
@@ -30,7 +30,6 @@ namespace OnOnOwn
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrderMenu> OrderMenu { get; set; }
         public virtual DbSet<Stol> Stol { get; set; }
-        public virtual DbSet<StopList> StopList { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Type> Type { get; set; }
     }

@@ -1,4 +1,4 @@
-﻿<Page x:Class="WpfAppOnOnOwn.Pages.AdmOrders"
+﻿<Page x:Class="WpfAppOnOnOwn.Pages.OrderCompletePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:WpfAppOnOnOwn.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AdmOrders">
+      Title="OrderCompletePage">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -41,12 +41,12 @@
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="1" Height="600" >
-            <ListView  x:Name="Orders" ItemsSource="{Binding order}" Height="600">
+            <ListView  x:Name="Orders" ItemsSource="{Binding order2show}" Height="600">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="№" Width="100" DisplayMemberBinding="{Binding idOrder}"/>
-                        <GridViewColumn Header="№ Стола" Width="100" DisplayMemberBinding="{Binding idStol}"/>
-                        <GridViewColumn Header="Стоимость" Width="100" DisplayMemberBinding="{Binding FullPrice}"/>
+                        <GridViewColumn Header="№" Width="100" DisplayMemberBinding="{Binding IDom}"/>
+                        <GridViewColumn Header="№ Стола" Width="100" DisplayMemberBinding="{Binding menu.NameDish}"/>
+                        <GridViewColumn Header="Стоимость" Width="100" DisplayMemberBinding="{Binding price}"/>
 
                     </GridView>
                 </ListView.View>
@@ -59,7 +59,7 @@
             Margin="10">
         </StackPanel>
         <Button
-            Content="Перейти к заказу" 
+            Content="Подтвердить готовку" 
                 FontSize="20"
                 Background="Aqua"
                 x:Name="DoOrder" 
@@ -70,6 +70,6 @@
                 Height="70" 
                 Width="300" 
                 Margin="0,10,0,10"
-                Click="GotoOrder_Click"/>
+                Click="OrderComplete"/>
     </Grid>
 </Page>

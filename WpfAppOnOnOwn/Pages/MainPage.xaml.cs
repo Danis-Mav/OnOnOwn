@@ -51,6 +51,7 @@ namespace WpfAppOnOnOwn.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            isAdmin = false;
             NavigationService.Navigate(new MenuPage(isAdmin));
         }
     }
