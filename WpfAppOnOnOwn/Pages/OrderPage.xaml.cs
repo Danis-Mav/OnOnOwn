@@ -60,7 +60,7 @@ namespace WpfAppOnOnOwn.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            NavigationService.Navigate(new MenuPage(MenuPage.globAdmin));
         }
     }
 }

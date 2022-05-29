@@ -31,28 +31,28 @@ namespace WpfAppOnOnOwn.Pages
             this.DataContext = this;
             foreach (var i in menu)
             {
-                if (i.IsDelete == true)
-                    menu2show.Add(i);
 
+                if (i.IsST == true)
+                    menu2show.Add(i);
             }
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            NavigationService.Navigate(new MenuPage((MenuPage.globAdmin)));
         }
 
         private void DeleteSL_Click(object sender, RoutedEventArgs e)
         {
             if (prod.SelectedItem != null)
             {
-                (prod.SelectedItem as menu).IsDelete = false;
+                (prod.SelectedItem as menu).IsST = false;
                 DBConnection.connection.menu.FirstOrDefault();
                 DBConnection.connection.SaveChanges();
             }
             else MessageBox.Show("Выберите блюдо");
-            menu = new ObservableCollection<menu>(DBConnection.connection.menu.Where(x => (bool)x.IsDelete).ToList());
+            menu = new ObservableCollection<menu>(DBConnection.connection.menu.Where(x => (bool)x.IsST).ToList());
             prod.ItemsSource = menu;
             prod.Items.Refresh();
         }

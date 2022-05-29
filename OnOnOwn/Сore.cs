@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnOnOwn
 {
-    public static class DBConnection
+    internal class Сore
     {
-        public static OnOnOwnEntities2 connection = new OnOnOwnEntities2();
     }
 }

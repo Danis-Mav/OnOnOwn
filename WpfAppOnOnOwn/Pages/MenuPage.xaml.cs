@@ -25,6 +25,8 @@ namespace WpfAppOnOnOwn.Pages
         public static bool globAdmin;
         public static ObservableCollection<menu> menu { get; set; }
         public static List<menu> menu2show { get; set; }
+
+        private static menu currentMenu = new menu();
         public MenuPage(bool isAdmin)
         {
             globAdmin = isAdmin;
@@ -34,11 +36,15 @@ namespace WpfAppOnOnOwn.Pages
 
             foreach (var i in menu)
             {
-                if (i.IsDelete == false)
-                    menu2show.Add(i);
-                
+                if ((i.IsDelete == false) && ( i.IsST == false))
+                {                   
+                        menu2show.Add(i);
+                    }                
             }
             InitializeComponent();
+            menu = new ObservableCollection<menu>(DBConnection.connection.menu.Where(x => (bool)x.IsST == false).ToList());
+            prod.ItemsSource = menu;
+            prod.Items.Refresh();
             if (globAdmin==true)
             { 
                 ToOrderDish.Visibility = Visibility.Hidden;
@@ -108,7 +114,7 @@ namespace WpfAppOnOnOwn.Pages
 
         private void AddDish_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate(new NewEditPage());
+            NavigationService.Navigate(new RedPage(new menu()));
         }
 
         private void DeleteDish_Click(object sender, RoutedEventArgs e)
@@ -117,7 +123,7 @@ namespace WpfAppOnOnOwn.Pages
             if (prod.SelectedItem != null)
             {
                 var st = prod.SelectedItem as menu;
-                st.IsDelete = true;
+                st.IsST = true;
                 DBConnection.connection.SaveChanges();
             }
             else MessageBox.Show("Выберите блюдо");
@@ -125,9 +131,13 @@ namespace WpfAppOnOnOwn.Pages
 
         private void RedDish_Click(object sender, RoutedEventArgs e)
         {
-             var n = (sender as ListView).SelectedItem as menu;
-             NavigationService.Navigate(new RedPage(n));
-            //NavigationService.Navigate(new NewEditPage());
+            if (prod.SelectedItem != null)
+            {
+                var n = currentMenu;
+                NavigationService.Navigate(new RedPage(n));
+            }
+            else MessageBox.Show("Выберите блюдо");
+
         }
 
         private void Orders_Click(object sender, RoutedEventArgs e)
@@ -142,14 +152,15 @@ namespace WpfAppOnOnOwn.Pages
 
         private void RedStopList_Click(object sender, RoutedEventArgs e)
         {
+            
             if (prod.SelectedItem != null)
             {
-                (prod.SelectedItem as menu).IsDelete = true;
+                (prod.SelectedItem as menu).IsST = true;
                 DBConnection.connection.menu.FirstOrDefault();
                 DBConnection.connection.SaveChanges();
             }
             else MessageBox.Show("Выберите блюдо");
-            menu = new ObservableCollection<menu>(DBConnection.connection.menu.Where(x => (bool)x.IsDelete).ToList());
+            menu = new ObservableCollection<menu>(DBConnection.connection.menu.Where(x => (bool)x.IsST == false).ToList());
             prod.ItemsSource = menu;
             prod.Items.Refresh();
         }
@@ -161,7 +172,8 @@ namespace WpfAppOnOnOwn.Pages
 
         private void prod_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+            currentMenu = ((sender as ListView).SelectedItem as menu);
         }
+       
     }
 }

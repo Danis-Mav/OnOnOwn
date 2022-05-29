@@ -22,6 +22,7 @@ namespace WpfAppOnOnOwn.Pages
     /// </summary>
     public partial class AdmOrders : Page
     {
+        private static Order currentMenu = new Order();
         public static ObservableCollection<Order> order { get; set; }
         
         public AdmOrders()
@@ -33,13 +34,22 @@ namespace WpfAppOnOnOwn.Pages
 
         private void GotoOrder_Click(object sender, RoutedEventArgs e)
         {
-            var n = (sender as ListView).SelectedItem as Order;
-            NavigationService.Navigate(new OrderCompletePage());
+            if (Orders.SelectedItem != null)
+            {
+                var n = currentMenu;
+                NavigationService.Navigate(new OrderCompletePage(n));
+            }
+            else MessageBox.Show("Выберите блюдо");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void Orders_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            currentMenu = ((sender as ListView).SelectedItem as Order);
         }
     }
 }

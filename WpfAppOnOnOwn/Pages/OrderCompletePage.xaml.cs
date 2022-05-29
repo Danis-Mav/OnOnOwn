@@ -24,10 +24,10 @@ namespace WpfAppOnOnOwn.Pages
     {
         public static ObservableCollection<OrderMenu> order { get; set; }
         public static List<OrderMenu> order2show { get; set; }
-        public OrderCompletePage()
+        public OrderCompletePage(Order n)
         {
             this.DataContext = this;
-            foreach (var i in order)
+            foreach (var i in order2show)
             {
                 if (i.IDorder == 1)
                     order2show.Add(i);

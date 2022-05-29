@@ -24,6 +24,7 @@
           <Property Name="img" Type="varbinary(max)" />
           <Property Name="description" Type="nvarchar" MaxLength="200" />
           <Property Name="IsDelete" Type="bit" />
+          <Property Name="IsST" Type="bit" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -180,6 +181,7 @@
           <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="IsST" Type="Boolean" />
           <NavigationProperty Name="Country" Relationship="Self.FK_menu_Country" FromRole="menu" ToRole="Country" />
           <NavigationProperty Name="Type" Relationship="Self.FK_menu_Type" FromRole="menu" ToRole="Type" />
           <NavigationProperty Name="OrderMenu" Relationship="Self.FK_OrderMenu_menu" FromRole="menu" ToRole="OrderMenu" />
@@ -291,7 +293,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="OnOnOwnEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="OnOnOwnEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Country" EntityType="Self.Country" />
           <EntitySet Name="menu" EntityType="Self.menu" />
           <EntitySet Name="Order" EntityType="Self.Order" />
@@ -325,7 +327,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище OnOnOwnModelContainer" CdmEntityContainer="OnOnOwnEntities1">
+        <EntityContainerMapping StorageEntityContainer="Хранилище OnOnOwnModelContainer" CdmEntityContainer="OnOnOwnEntities2">
           <EntitySetMapping Name="Country">
             <EntityTypeMapping TypeName="OnOnOwnModel.Country">
               <MappingFragment StoreEntitySet="Country">
@@ -345,6 +347,7 @@
                 <ScalarProperty Name="img" ColumnName="img" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsST" ColumnName="IsST" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

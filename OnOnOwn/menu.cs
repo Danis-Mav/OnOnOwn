@@ -28,6 +28,7 @@ namespace OnOnOwn
         public byte[] img { get; set; }
         public string description { get; set; }
         public Nullable<bool> IsDelete { get; set; }
+        public Nullable<bool> IsST { get; set; }
     
         public virtual Country Country { get; set; }
         public virtual Type Type { get; set; }

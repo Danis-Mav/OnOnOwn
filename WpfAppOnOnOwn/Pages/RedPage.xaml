@@ -38,25 +38,18 @@
         <TextBlock Text="Цена" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
         <TextBlock x:Name="tb_id" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="200"/>
-        <TextBox x:Name="tb_name" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="200" PreviewTextInput="tb_name_PreviewTextInput"/>
-        <TextBox x:Name="tb_description" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Width="300" PreviewTextInput="tb_name_PreviewTextInput"/>
-        <TextBox x:Name="tb_price" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="200" PreviewTextInput="tb_name_PreviewTextInput"/>
+        <TextBox x:Name="tb_name" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="200" />
+        <TextBox x:Name="tb_description" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Width="300" />
+        <TextBox x:Name="tb_price" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="200" />
         <StackPanel x:Name="sp_unit" Grid.Column="1" Grid.Row="4" Margin="10" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <RadioButton x:Name="rb_hd" GroupName="unit" Content="кг" Margin="10"/>
-            <RadioButton x:Name="rb_cd" GroupName="unit" Content="шт" Margin="10"/>
-            <RadioButton x:Name="rb_zak" GroupName="unit" Content="л" Margin="10"/>
-            <RadioButton x:Name="rb_sd" GroupName="unit" Content="шт" Margin="10"/>
-            <RadioButton x:Name="rb_dr" GroupName="unit" Content="л" Margin="10"/>
+            <RadioButton x:Name="rb_hd" GroupName="unit" Content="hd" Margin="10"/>
+            <RadioButton x:Name="rb_cd" GroupName="unit" Content="cd" Margin="10"/>
+            <RadioButton x:Name="rb_zak" GroupName="unit" Content="zak" Margin="10"/>
+            <RadioButton x:Name="rb_sd" GroupName="unit" Content="sd" Margin="10"/>
+            <RadioButton x:Name="rb_dr" GroupName="unit" Content="dr" Margin="10"/>
         </StackPanel>
 
         <StackPanel x:Name="sp_country" Grid.Column="1" Grid.Row="5" Grid.RowSpan="6">
-            <ListView x:Name="lv_country" ItemsSource="{Binding Country}" Width="150" Height="150">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Label Content="{Binding Country.NameCountry}" Height="50"/>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
             <ComboBox Name="cb_country" Margin="10"/>
         </StackPanel>
 

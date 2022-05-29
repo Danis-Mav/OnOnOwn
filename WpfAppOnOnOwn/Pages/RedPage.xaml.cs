@@ -2,6 +2,7 @@
 using OnOnOwn;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -23,17 +24,24 @@ namespace WpfAppOnOnOwn.Pages
     /// </summary>
     public partial class RedPage : Page
     {
+        public static ObservableCollection<menu> Menu { get; set; }
+        public static ObservableCollection<Country> Country { get; set; }
+
         public static menu constmenu;
         public RedPage(menu n)
         {
+            Country = new ObservableCollection<Country>(DBConnection.connection.Country.ToList());
             InitializeComponent();
             constmenu = n;
             this.DataContext = constmenu;
             tb_id.Text = n.IDmenu.ToString();
             tb_name.Text = n.NameDish;
             tb_description.Text = n.description;
+            tb_price.Text = n.Price.ToString();
 
             cb_country.ItemsSource = DBConnection.connection.Country.ToList();
+            cb_country.DisplayMemberPath = "NameCountry";
+
         }
 
         private void btn_back_Click(object sender, RoutedEventArgs e)
@@ -87,7 +95,22 @@ namespace WpfAppOnOnOwn.Pages
         {
             constmenu.NameDish = tb_name.Text;
             constmenu.description = tb_description.Text;
-            constmenu.Price = Convert.ToInt32(tb_price);
+            constmenu.Price = Convert.ToInt32(tb_price.Text);
+            constmenu.IsDelete = false;
+            constmenu.IsST = false;
+            if (cb_country.SelectedIndex == 0)
+            {
+                constmenu.IDcountry = 1;
+            }
+            else if (cb_country.SelectedIndex == 1)
+            {
+                constmenu.IDcountry = 2;
+            }
+            else if (cb_country.SelectedIndex == 2)
+            {
+                constmenu.IDcountry = 3;
+            }
+
             if (rb_hd.IsChecked == true)
             {
                 constmenu.IDtype = 1;
@@ -108,8 +131,11 @@ namespace WpfAppOnOnOwn.Pages
             {
                 constmenu.IDtype = 5;
             }
+
+            DBConnection.connection.menu.Add(constmenu);
             DBConnection.connection.SaveChanges();
             NavigationService.Navigate(new MenuPage(MenuPage.globAdmin));
+
         }
     }
 }
