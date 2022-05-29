@@ -49,25 +49,11 @@ namespace WpfAppOnOnOwn.Pages
             NavigationService.GoBack();
         }
 
-        public static bool DeleteDish(menu menu)
-        {
-            menu.IsDelete = true;
-            try
-            {
-                DBConnection.connection.SaveChanges();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
         private void btn_delite_Click(object sender, RoutedEventArgs e)
         {
-            DeleteDish(constmenu);
+            DataAccess.DeleteDish(constmenu);
             MessageBox.Show($"Блюдо {constmenu.NameDish} удалено");
-            NavigationService.GoBack();
+            NavigationService.Navigate(new MenuPage(MenuPage.globAdmin));
         }
 
         private void tb_name_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -132,8 +118,7 @@ namespace WpfAppOnOnOwn.Pages
                 constmenu.IDtype = 5;
             }
 
-            DBConnection.connection.menu.Add(constmenu);
-            DBConnection.connection.SaveChanges();
+            DataAccess.AddDish(constmenu);
             NavigationService.Navigate(new MenuPage(MenuPage.globAdmin));
 
         }

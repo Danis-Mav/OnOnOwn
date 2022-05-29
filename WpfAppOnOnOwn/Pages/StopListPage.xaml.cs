@@ -48,8 +48,7 @@ namespace WpfAppOnOnOwn.Pages
             if (prod.SelectedItem != null)
             {
                 (prod.SelectedItem as menu).IsST = false;
-                DBConnection.connection.menu.FirstOrDefault();
-                DBConnection.connection.SaveChanges();
+                DataAccess.DeleteSL();
             }
             else MessageBox.Show("Выберите блюдо");
             menu = new ObservableCollection<menu>(DBConnection.connection.menu.Where(x => (bool)x.IsST).ToList());

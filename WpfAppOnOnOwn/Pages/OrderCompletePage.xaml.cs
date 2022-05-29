@@ -22,15 +22,16 @@ namespace WpfAppOnOnOwn.Pages
     /// </summary>
     public partial class OrderCompletePage : Page
     {
-        public static ObservableCollection<OrderMenu> order { get; set; }
+        public static ObservableCollection<OrderMenu> ordermenu { get; set; }
         public static List<OrderMenu> order2show { get; set; }
         public OrderCompletePage(Order n)
         {
+            ordermenu = new ObservableCollection<OrderMenu>(DBConnection.connection.OrderMenu.ToList());
             this.DataContext = this;
-            foreach (var i in order2show)
+            foreach (var i in ordermenu.ToList())
             {
                 if (i.IDorder == 1)
-                    order2show.Add(i);
+                    ordermenu.Add(i);
 
             }
             InitializeComponent();

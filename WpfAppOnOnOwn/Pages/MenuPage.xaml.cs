@@ -36,10 +36,10 @@ namespace WpfAppOnOnOwn.Pages
 
             foreach (var i in menu)
             {
-                if ((i.IsDelete == false) && ( i.IsST == false))
-                {                   
-                        menu2show.Add(i);
-                    }                
+                if ((i.IsDelete == false) && (i.IsST == false))
+                {
+                    menu2show.Add(i);
+                }
             }
             InitializeComponent();
             menu = new ObservableCollection<menu>(DBConnection.connection.menu.Where(x => (bool)x.IsST == false).ToList());
@@ -98,10 +98,8 @@ namespace WpfAppOnOnOwn.Pages
                 newOM.IDMenu = menuToAdd.IDmenu;
                 newOM.IDorder = 1;  //СЮДА ВСТАВЛЯТЬ ID ЗАКАЗА  
 
-                
 
-                DBConnection.connection.OrderMenu.Add(newOM);
-                DBConnection.connection.SaveChanges();
+                DataAccess.DoOrderMenu(newOM);
             }
             else MessageBox.Show("Выберите блюдо");
         }
