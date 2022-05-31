@@ -31,7 +31,6 @@ namespace WpfAppOnOnOwn.Pages
         {
             InitializeComponent();
             Nomer.Text = currentOrder.ToString();
-            //OrderMenu = new ObservableCollection<OrderMenu>(DBConnection.connection.OrderMenu.ToList());
             OrderMenu = new ObservableCollection<OrderMenu>(DBConnection.connection.OrderMenu.Where(x => x.IDorder == currentOrder).ToList());
             this.DataContext = this;
 
@@ -53,8 +52,8 @@ namespace WpfAppOnOnOwn.Pages
             var b = new Order();
             b.FullPrice = blogNum;
             b.idStol = 1;
-            b.IsComplete = false;
-            a.IsOrder = true;
+            b.IsComplete = true;
+            //a.IsOrder = true;
             DataAccess.DoOrder(b);
             MessageBox.Show("Заказ сделан");
             blogNum = 0;

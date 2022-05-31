@@ -32,6 +32,7 @@ namespace WpfAppOnOnOwn.Pages
 
         public MenuPage(bool isAdmin, int currentOrder)
         {
+            InitializeComponent();
             current2Order = currentOrder;
             globAdmin = isAdmin;
             menu = new ObservableCollection<menu>(DBConnection.connection.menu.ToList());
@@ -45,7 +46,6 @@ namespace WpfAppOnOnOwn.Pages
                     menu2show.Add(i);
                 }
             }
-            InitializeComponent();
             menu = new ObservableCollection<menu>(DBConnection.connection.menu.Where(x => (bool)x.IsST == false).ToList());
             prod.ItemsSource = menu;
             prod.Items.Refresh();

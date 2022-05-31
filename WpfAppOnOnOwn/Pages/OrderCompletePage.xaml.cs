@@ -24,17 +24,21 @@ namespace WpfAppOnOnOwn.Pages
     {
         public static ObservableCollection<OrderMenu> ordermenu { get; set; }
         public static List<OrderMenu> order2show { get; set; }
-        public OrderCompletePage(Order n)
+        public OrderCompletePage(int idorder, int fullprice)
         {
-            ordermenu = new ObservableCollection<OrderMenu>(DBConnection.connection.OrderMenu.ToList());
+            InitializeComponent();
+            Nomer.Text = idorder.ToString();
+            order2show = new List<OrderMenu>();
+            ordermenu = new ObservableCollection<OrderMenu>(DBConnection.connection.OrderMenu.Where(x => x.IDorder == idorder).ToList());
             this.DataContext = this;
             foreach (var i in ordermenu.ToList())
             {
-                if (i.IDorder == 1)
-                    ordermenu.Add(i);
-
+                //if (i.IDorder == idorder)
+                //{
+                    order2show.Add(i);
+                //}
             }
-            InitializeComponent();
+            
         }
 
         private void OrderComplete(object sender, RoutedEventArgs e)

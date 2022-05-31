@@ -23,11 +23,13 @@ namespace WpfAppOnOnOwn.Pages
     public partial class AdmOrders : Page
     {
         private static Order currentMenu = new Order();
+        public static int currentOrder;
+        public static int currentFullPrice;
         public static ObservableCollection<Order> order { get; set; }
         
         public AdmOrders()
         {
-            order = new ObservableCollection<Order>(DBConnection.connection.Order.ToList());
+            order = new ObservableCollection<Order>(DBConnection.connection.Order.Where(x => (bool)x.IsComplete == true).ToList());
             this.DataContext = this;
             InitializeComponent();
         }
@@ -37,7 +39,9 @@ namespace WpfAppOnOnOwn.Pages
             if (Orders.SelectedItem != null)
             {
                 var n = currentMenu;
-                NavigationService.Navigate(new OrderCompletePage(n));
+                currentOrder = currentMenu.idOrder;
+                currentFullPrice = (int)currentMenu.FullPrice;
+                NavigationService.Navigate(new OrderCompletePage(currentOrder,currentFullPrice));
             }
             else MessageBox.Show("Выберите блюдо");
         }

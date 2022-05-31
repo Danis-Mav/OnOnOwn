@@ -35,17 +35,21 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Orientation="Horizontal">
-            <TextBlock Text="Заказы" 
-                       FontSize="20"
+            <TextBlock Text="Заказ №" 
+                       FontSize="40"
                        Foreground="Wheat"/>
+            <TextBlock x:Name="Nomer"
+               FontSize="40"
+               Foreground="Wheat"
+                />
         </StackPanel>
 
-        <StackPanel Grid.Column="1" Grid.Row="1" Height="600" >
-            <ListView  x:Name="Orders" ItemsSource="{Binding order2show}" Height="600">
+        <StackPanel Grid.Column="1" Grid.Row="1" Height="700" >
+            <ListView  x:Name="Orders" ItemsSource="{Binding order2show}" Height="700">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="№" Width="100" DisplayMemberBinding="{Binding IDom}"/>
-                        <GridViewColumn Header="№ Стола" Width="100" DisplayMemberBinding="{Binding menu.NameDish}"/>
+                        <GridViewColumn Header="Блюда" Width="300" DisplayMemberBinding="{Binding menu.NameDish}"/>
                         <GridViewColumn Header="Стоимость" Width="100" DisplayMemberBinding="{Binding price}"/>
 
                     </GridView>
@@ -60,16 +64,16 @@
         </StackPanel>
         <Button
             Content="Подтвердить готовку" 
-                FontSize="20"
+                FontSize="30"
                 Background="Aqua"
                 x:Name="DoOrder" 
                 Grid.Column="1" 
                 Grid.Row="2"
                 HorizontalAlignment="Center" 
                 VerticalAlignment="Center" 
-                Height="70" 
-                Width="300" 
-                Margin="0,10,0,10"
+                Height="100" 
+                Width="400" 
+                Margin="0,50,0,10"
                 Click="OrderComplete"/>
     </Grid>
 </Page>
