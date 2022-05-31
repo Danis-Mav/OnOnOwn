@@ -19,8 +19,12 @@ namespace WpfAppOnOnOwn.Pages
     /// <summary>
     /// Логика взаимодействия для MainPage.xaml
     /// </summary>
+    /// 
+
     public partial class MainPage : Page
     {
+
+        public static int currentOrder;
         public static bool isAdmin = false;
         public MainPage()
         {
@@ -36,7 +40,7 @@ namespace WpfAppOnOnOwn.Pages
                 {
                     isAdmin = true;
                     MessageBox.Show("Авторизация пройдена");
-                    NavigationService.Navigate(new MenuPage(isAdmin));
+                    NavigationService.Navigate(new MenuPage(isAdmin, currentOrder));
                     
                     //NavigationService.Navigate(new AdminPage());
                 }
@@ -52,8 +56,13 @@ namespace WpfAppOnOnOwn.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            var newOrder = new Order();
+            newOrder.idStol = 1;
+            newOrder.IsComplete = false;
+            DataAccess.DoOrder(newOrder);
+            currentOrder = newOrder.idOrder;
             isAdmin = false;
-            NavigationService.Navigate(new MenuPage(isAdmin));
+            NavigationService.Navigate(new MenuPage(isAdmin, currentOrder));
         }
     }
 }

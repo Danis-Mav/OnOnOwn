@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace WpfAppOnOnOwn.Pages
 {
@@ -38,6 +39,7 @@ namespace WpfAppOnOnOwn.Pages
             tb_name.Text = n.NameDish;
             tb_description.Text = n.description;
             tb_price.Text = n.Price.ToString();
+            
 
             cb_country.ItemsSource = DBConnection.connection.Country.ToList();
             cb_country.DisplayMemberPath = "NameCountry";
@@ -53,7 +55,7 @@ namespace WpfAppOnOnOwn.Pages
         {
             DataAccess.DeleteDish(constmenu);
             MessageBox.Show($"Блюдо {constmenu.NameDish} удалено");
-            NavigationService.Navigate(new MenuPage(MenuPage.globAdmin));
+            NavigationService.Navigate(new MenuPage(MenuPage.globAdmin, MainPage.currentOrder));
         }
 
         private void tb_name_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -119,8 +121,15 @@ namespace WpfAppOnOnOwn.Pages
             }
 
             DataAccess.AddDish(constmenu);
-            NavigationService.Navigate(new MenuPage(MenuPage.globAdmin));
+            NavigationService.Navigate(new MenuPage(MenuPage.globAdmin, MainPage.currentOrder));
 
+        }
+
+        private void tb_price_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

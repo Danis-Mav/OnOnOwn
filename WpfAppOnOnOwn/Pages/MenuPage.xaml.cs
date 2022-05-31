@@ -27,8 +27,12 @@ namespace WpfAppOnOnOwn.Pages
         public static List<menu> menu2show { get; set; }
 
         private static menu currentMenu = new menu();
-        public MenuPage(bool isAdmin)
+        public static int current2Order;
+
+
+        public MenuPage(bool isAdmin, int currentOrder)
         {
+            current2Order = currentOrder;
             globAdmin = isAdmin;
             menu = new ObservableCollection<menu>(DBConnection.connection.menu.ToList());
             menu2show = new List<menu>();
@@ -85,20 +89,18 @@ namespace WpfAppOnOnOwn.Pages
         {
             prod.ItemsSource = new ObservableCollection<menu>(DBConnection.connection.menu.ToList());
         }
-
         private void ToOrderDish_Button(object sender, RoutedEventArgs e)
         {
             if (prod.SelectedItem != null)
             {
+
                 var menuToAdd = prod.SelectedItem as menu;
                 var newOM = new OrderMenu();
 
-                newOM.IDom = 1;
                 newOM.price = menuToAdd.Price;
                 newOM.IDMenu = menuToAdd.IDmenu;
-                newOM.IDorder = 1;  //СЮДА ВСТАВЛЯТЬ ID ЗАКАЗА  
-
-
+                newOM.IDorder = current2Order;
+                newOM.IsOrder = false;
                 DataAccess.DoOrderMenu(newOM);
             }
             else MessageBox.Show("Выберите блюдо");
@@ -107,7 +109,7 @@ namespace WpfAppOnOnOwn.Pages
 
         private void GoOrder_Button(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new OrderPage());
+            NavigationService.Navigate(new OrderPage(current2Order));
         }
 
         private void AddDish_Click(object sender, RoutedEventArgs e)

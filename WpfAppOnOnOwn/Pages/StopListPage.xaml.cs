@@ -40,7 +40,7 @@ namespace WpfAppOnOnOwn.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MenuPage((MenuPage.globAdmin)));
+            NavigationService.Navigate(new MenuPage((MenuPage.globAdmin) ,( MainPage.currentOrder)));
         }
 
         private void DeleteSL_Click(object sender, RoutedEventArgs e)

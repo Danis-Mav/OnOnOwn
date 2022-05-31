@@ -33,6 +33,7 @@
           <Property Name="idOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idStol" Type="int" />
           <Property Name="FullPrice" Type="int" />
+          <Property Name="IsComplete" Type="bit" />
         </EntityType>
         <EntityType Name="OrderMenu">
           <Key>
@@ -42,6 +43,7 @@
           <Property Name="IDorder" Type="int" />
           <Property Name="IDMenu" Type="int" />
           <Property Name="price" Type="int" />
+          <Property Name="IsOrder" Type="bit" />
         </EntityType>
         <EntityType Name="Stol">
           <Key>
@@ -193,6 +195,7 @@
           <Property Name="idOrder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idStol" Type="Int32" />
           <Property Name="FullPrice" Type="Int32" />
+          <Property Name="IsComplete" Type="Boolean" />
           <NavigationProperty Name="Stol" Relationship="Self.FK_Order_Stol" FromRole="Order" ToRole="Stol" />
           <NavigationProperty Name="OrderMenu" Relationship="Self.FK_OrderMenu_Order" FromRole="Order" ToRole="OrderMenu" />
         </EntityType>
@@ -204,6 +207,7 @@
           <Property Name="IDorder" Type="Int32" />
           <Property Name="IDMenu" Type="Int32" />
           <Property Name="price" Type="Int32" />
+          <Property Name="IsOrder" Type="Boolean" />
           <NavigationProperty Name="menu" Relationship="Self.FK_OrderMenu_menu" FromRole="OrderMenu" ToRole="menu" />
           <NavigationProperty Name="Order" Relationship="Self.FK_OrderMenu_Order" FromRole="OrderMenu" ToRole="Order" />
         </EntityType>
@@ -293,7 +297,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="OnOnOwnEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="OnOnOwnEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Country" EntityType="Self.Country" />
           <EntitySet Name="menu" EntityType="Self.menu" />
           <EntitySet Name="Order" EntityType="Self.Order" />
@@ -327,7 +331,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище OnOnOwnModelContainer" CdmEntityContainer="OnOnOwnEntities2">
+        <EntityContainerMapping StorageEntityContainer="Хранилище OnOnOwnModelContainer" CdmEntityContainer="OnOnOwnEntities1">
           <EntitySetMapping Name="Country">
             <EntityTypeMapping TypeName="OnOnOwnModel.Country">
               <MappingFragment StoreEntitySet="Country">
@@ -357,6 +361,7 @@
                 <ScalarProperty Name="idOrder" ColumnName="idOrder" />
                 <ScalarProperty Name="idStol" ColumnName="idStol" />
                 <ScalarProperty Name="FullPrice" ColumnName="FullPrice" />
+                <ScalarProperty Name="IsComplete" ColumnName="IsComplete" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -367,6 +372,7 @@
                 <ScalarProperty Name="IDorder" ColumnName="IDorder" />
                 <ScalarProperty Name="IDMenu" ColumnName="IDMenu" />
                 <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

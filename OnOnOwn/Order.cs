@@ -23,6 +23,7 @@ namespace OnOnOwn
         public int idOrder { get; set; }
         public Nullable<int> idStol { get; set; }
         public Nullable<int> FullPrice { get; set; }
+        public Nullable<bool> IsComplete { get; set; }
     
         public virtual Stol Stol { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

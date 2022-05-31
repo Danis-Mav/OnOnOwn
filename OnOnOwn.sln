@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnOnOwn", "OnOnOwn\OnOnOwn.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppOnOnOwn", "WpfAppOnOnOwn\WpfAppOnOnOwn.csproj", "{02790B9C-6D8F-4492-B2AF-BF20285BAEAF}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{314478D1-6541-42D1-A584-D089ABDAA655}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnOnOwnConsole", "Console\OnOnOwnConsole.csproj", "{7D966A77-324C-4846-91A5-F20096A6E5FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{02790B9C-6D8F-4492-B2AF-BF20285BAEAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02790B9C-6D8F-4492-B2AF-BF20285BAEAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02790B9C-6D8F-4492-B2AF-BF20285BAEAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{314478D1-6541-42D1-A584-D089ABDAA655}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{314478D1-6541-42D1-A584-D089ABDAA655}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{314478D1-6541-42D1-A584-D089ABDAA655}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{314478D1-6541-42D1-A584-D089ABDAA655}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D966A77-324C-4846-91A5-F20096A6E5FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D966A77-324C-4846-91A5-F20096A6E5FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D966A77-324C-4846-91A5-F20096A6E5FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D966A77-324C-4846-91A5-F20096A6E5FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

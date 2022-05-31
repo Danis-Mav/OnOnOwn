@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using OnOnOwn;
 
+
 namespace WpfAppOnOnOwn.Pages
 {
     /// <summary>
@@ -25,22 +26,21 @@ namespace WpfAppOnOnOwn.Pages
         public static int blogNum { get; set; }
         public static ObservableCollection<OrderMenu> OrderMenu { get; set; }
         public static ObservableCollection<menu> menu { get; set; }
-        public static ObservableCollection<Order> Order { get; set; }
-        public OrderPage()
+        public static ObservableCollection<Order> order { get; set; }
+        public OrderPage(int currentOrder)
         {
             InitializeComponent();
-            OrderMenu = new ObservableCollection<OrderMenu>(DBConnection.connection.OrderMenu.ToList());
-            this.DataContext = this;
-            menu = new ObservableCollection<menu>(DBConnection.connection.menu.ToList());
-            this.DataContext = this;
-            Order = new ObservableCollection<Order>(DBConnection.connection.Order.ToList());
+            Nomer.Text = currentOrder.ToString();
+            //OrderMenu = new ObservableCollection<OrderMenu>(DBConnection.connection.OrderMenu.ToList());
+            OrderMenu = new ObservableCollection<OrderMenu>(DBConnection.connection.OrderMenu.Where(x => x.IDorder == currentOrder).ToList());
             this.DataContext = this;
 
-            var query = from r in OrderMenu.AsEnumerable()
+            var query = from r in (OrderMenu.Where(x => x.IDorder == currentOrder)).AsEnumerable()
                         select r.price;
 
             foreach (var i in query)
             {
+                
                 blogNum += (int)i;
             }
             Total.Content = blogNum;
@@ -53,13 +53,17 @@ namespace WpfAppOnOnOwn.Pages
             var b = new Order();
             b.FullPrice = blogNum;
             b.idStol = 1;
+            b.IsComplete = false;
+            a.IsOrder = true;
             DataAccess.DoOrder(b);
             MessageBox.Show("Заказ сделан");
+            blogNum = 0;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MenuPage(MenuPage.globAdmin));
+            NavigationService.Navigate(new MenuPage(MenuPage.globAdmin,MainPage.currentOrder));
         }
     }
 }

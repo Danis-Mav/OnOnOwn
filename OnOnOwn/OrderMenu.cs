@@ -18,6 +18,7 @@ namespace OnOnOwn
         public Nullable<int> IDorder { get; set; }
         public Nullable<int> IDMenu { get; set; }
         public Nullable<int> price { get; set; }
+        public Nullable<bool> IsOrder { get; set; }
     
         public virtual menu menu { get; set; }
         public virtual Order Order { get; set; }

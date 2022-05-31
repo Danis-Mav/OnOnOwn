@@ -26,35 +26,35 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Button x:Name="btn_back" Content="Назад" Grid.Column="0" Grid.Row="0" Height="30" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" Click="btn_back_Click" Margin="20"/>
-        <Button x:Name="btn_save" Content="Сохранить" Grid.Column="3" Grid.Row="0" Height="60" Width="200" VerticalAlignment="Top" HorizontalAlignment="Right" Click="btn_save_Click" Margin="20"/>
-        <Button x:Name="btn_delite" Content="Удалить" Grid.Column="3" Grid.Row="7" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="60" Width="200" Click="btn_delite_Click" Margin="20"/>
+        <Button FontSize="20" Background="Aqua" x:Name="btn_back" Content="Назад" Grid.Column="0" Grid.Row="0" Height="50" Width="150" VerticalAlignment="Top" HorizontalAlignment="Left" Click="btn_back_Click" Margin="20"/>
+        <Button FontSize="20" Background="Aqua" x:Name="btn_save" Content="Сохранить" Grid.Column="3" Grid.Row="0" Height="60" Width="200" VerticalAlignment="Top" HorizontalAlignment="Right" Click="btn_save_Click" Margin="20"/>
+        <Button FontSize="20" Background="Aqua" x:Name="btn_delite" Content="Удалить" Grid.Column="3" Grid.Row="7" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="60" Width="200" Click="btn_delite_Click" Margin="20"/>
 
-        <TextBlock Text="ID" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBlock Text="Название" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBlock Text="Описание" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBlock Text="Ед.измерения" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBlock Text="Страны" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBlock Text="Цена" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock FontSize="30" Text="ID" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20"/>
+        <TextBlock FontSize="30" Text="Название" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20"/>
+        <TextBlock FontSize="30" Text="Описание" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20"/>
+        <TextBlock FontSize="30" Text="Вид блюда" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20"/>
+        <TextBlock FontSize="30" Text="Страны" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20"/>
+        <TextBlock FontSize="30" Text="Цена" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20"/>
 
-        <TextBlock x:Name="tb_id" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="200"/>
-        <TextBox x:Name="tb_name" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="200" />
-        <TextBox x:Name="tb_description" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Width="300" />
-        <TextBox x:Name="tb_price" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="200" />
-        <StackPanel x:Name="sp_unit" Grid.Column="1" Grid.Row="4" Margin="10" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <RadioButton x:Name="rb_hd" GroupName="unit" Content="hd" Margin="10"/>
-            <RadioButton x:Name="rb_cd" GroupName="unit" Content="cd" Margin="10"/>
-            <RadioButton x:Name="rb_zak" GroupName="unit" Content="zak" Margin="10"/>
-            <RadioButton x:Name="rb_sd" GroupName="unit" Content="sd" Margin="10"/>
-            <RadioButton x:Name="rb_dr" GroupName="unit" Content="dr" Margin="10"/>
+        <TextBlock FontSize="30" x:Name="tb_id" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="200"/>
+        <TextBox FontSize="30" x:Name="tb_name" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="300" />
+        <TextBox FontSize="30" x:Name="tb_description" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Width="300" />
+        <TextBox FontSize="30" x:Name="tb_price" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="200" PreviewTextInput="tb_price_PreviewTextInput"/>
+        <StackPanel  x:Name="sp_unit" Grid.Column="1" Grid.Row="4" Margin="10" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <RadioButton FontSize="30" x:Name="rb_hd" GroupName="unit" Content="hd" Margin="10" />
+            <RadioButton FontSize="30" x:Name="rb_cd" GroupName="unit" Content="cd" Margin="10"/>
+            <RadioButton FontSize="30" x:Name="rb_zak" GroupName="unit" Content="zak" Margin="10"/>
+            <RadioButton FontSize="30" x:Name="rb_sd" GroupName="unit" Content="sd" Margin="10"/>
+            <RadioButton FontSize="30" x:Name="rb_dr" GroupName="unit" Content="dr" Margin="10"/>
         </StackPanel>
 
         <StackPanel x:Name="sp_country" Grid.Column="1" Grid.Row="5" Grid.RowSpan="6">
-            <ComboBox Name="cb_country" Margin="10"/>
+            <ComboBox Name="cb_country" Margin="10" Height="40" Width="300" Background="Aqua"/>
         </StackPanel>
 
-        <Image x:Name="img_prod" Source="{Binding img}" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="5" Margin="15"  VerticalAlignment="Center" Height="200" Width="200"/>
-        <Button x:Name="btn_newphoto" Content="Изменить фото" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="6" HorizontalAlignment="Center" Width="200" Click="btn_newphoto_Click"/>
+        <Image x:Name="img_prod" Source="{Binding img}" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="5" Margin="15"  VerticalAlignment="Center" Height="300" Width="300"/>
+        <Button Background="Aqua" FontSize="20" x:Name="btn_newphoto" Content="Добавить фото" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="6" HorizontalAlignment="Center" Width="200" Click="btn_newphoto_Click"/>
 
     </Grid>
 </Page>
