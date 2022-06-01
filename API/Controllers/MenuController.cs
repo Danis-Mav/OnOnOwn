@@ -11,7 +11,7 @@ namespace API.Controllers
     public class MenuController : Controller
     {
         [HttpGet]
-        public IEnumerable<menu> GetAllHeroes()
+        public IEnumerable<menu> GetAllMenu()
         {
             return DataAccess.GetAllMenu();
         }
