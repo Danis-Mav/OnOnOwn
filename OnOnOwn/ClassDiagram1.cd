@@ -1,35 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="OnOnOwn.DataAccess">
-    <Position X="1.5" Y="0.5" Width="1.5" />
+    <Position X="1.25" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gIEBAAABRAAAAAEAAABIAIgAAAAAAAAAAAAAAEAACAA=</HashCode>
       <FileName>DataAccess.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OnOnOwn.DBConnection">
-    <Position X="3" Y="3.75" Width="1.5" />
+    <Position X="1.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DBConnection.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OnOnOwn.OnOnOwnEntities1">
-    <Position X="3" Y="0.5" Width="1.75" />
+    <Position X="3" Y="0.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAAAAAAAAAAAAAAAgAEAICAAIAAQAAEAAAAAA=</HashCode>
       <FileName>Model1.Context.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OnOnOwn.Country">
-    <Position X="14" Y="3.5" Width="1.5" />
+    <Position X="11.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAIAAAAAAAAAAAAAIAA=</HashCode>
       <FileName>Country.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OnOnOwn.menu">
-    <Position X="11.25" Y="1.5" Width="1.5" />
+    <Position X="9" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAEAAMIAAAAAAAAAICBAAAAQAQAQAAIAA=</HashCode>
       <FileName>menu.cs</FileName>
@@ -43,28 +43,28 @@
     </TypeIdentifier>
   </Class>
   <Class Name="OnOnOwn.OrderMenu">
-    <Position X="9" Y="1.75" Width="1.5" />
+    <Position X="7" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEBAEAAAAQAAAAAAAAACAgAAAAAAAAAAAAQAAAAAAA=</HashCode>
       <FileName>OrderMenu.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OnOnOwn.Stol">
-    <Position X="7" Y="1" Width="1.5" />
+    <Position X="5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAAAAAAAAAAAAAQAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
       <FileName>Stol.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OnOnOwn.sysdiagrams">
-    <Position X="5" Y="0.5" Width="1.5" />
+    <Position X="3" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAACAIAAAAAAAAAAAAAAAQAAAFAAAAAAAAAAAAAAA=</HashCode>
       <FileName>sysdiagrams.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OnOnOwn.Type">
-    <Position X="14" Y="0.75" Width="1.5" />
+    <Position X="11.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAABAAAgAAAAAAAAAA=</HashCode>
       <FileName>Type.cs</FileName>

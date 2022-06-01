@@ -28,6 +28,7 @@ namespace WpfAppOnOnOwn.Pages
 
         private static menu currentMenu = new menu();
         public static int current2Order;
+        public static bool IsNew;
 
 
         public MenuPage(bool isAdmin, int currentOrder)
@@ -114,7 +115,8 @@ namespace WpfAppOnOnOwn.Pages
 
         private void AddDish_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new RedPage(new menu()));
+            IsNew = true;
+            NavigationService.Navigate(new RedPage(new menu(),IsNew));
         }
 
         private void DeleteDish_Click(object sender, RoutedEventArgs e)
@@ -133,8 +135,9 @@ namespace WpfAppOnOnOwn.Pages
         {
             if (prod.SelectedItem != null)
             {
+                IsNew = false;
                 var n = currentMenu;
-                NavigationService.Navigate(new RedPage(n));
+                NavigationService.Navigate(new RedPage(n,IsNew));
             }
             else MessageBox.Show("Выберите блюдо");
 

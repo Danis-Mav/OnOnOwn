@@ -10,7 +10,8 @@
 
     <Grid>
 
-        <Button FontSize="30" 
+        <Button FontSize="30"
+                Margin="0,450"
                 Content="Сделать заказ" 
                 Height="100" 
                 Width="300"

@@ -27,10 +27,12 @@ namespace WpfAppOnOnOwn.Pages
     {
         public static ObservableCollection<menu> Menu { get; set; }
         public static ObservableCollection<Country> Country { get; set; }
+        public static bool currentNew;
 
         public static menu constmenu;
-        public RedPage(menu n)
+        public RedPage(menu n,bool IsNew)
         {
+            currentNew = IsNew;
             Country = new ObservableCollection<Country>(DBConnection.connection.Country.ToList());
             InitializeComponent();
             constmenu = n;
@@ -120,8 +122,17 @@ namespace WpfAppOnOnOwn.Pages
                 constmenu.IDtype = 5;
             }
 
-            DataAccess.EditDish(constmenu);
-            NavigationService.Navigate(new MenuPage(MenuPage.globAdmin, MainPage.currentOrder));
+            if(currentNew == false)
+            {
+                DataAccess.EditDish(constmenu);
+                NavigationService.Navigate(new MenuPage(MenuPage.globAdmin, MainPage.currentOrder));
+            }
+            else
+            {
+                DataAccess.AddDish(constmenu);
+                NavigationService.Navigate(new MenuPage(MenuPage.globAdmin, MainPage.currentOrder));
+            }
+           
 
         }
 
