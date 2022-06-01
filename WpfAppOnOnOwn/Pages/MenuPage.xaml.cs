@@ -46,7 +46,7 @@ namespace WpfAppOnOnOwn.Pages
                     menu2show.Add(i);
                 }
             }
-            menu = new ObservableCollection<menu>(DBConnection.connection.menu.Where(x => (bool)x.IsST == false).ToList());
+            menu = new ObservableCollection<menu>(DBConnection.connection.menu.Where(x => (bool)(x.IsST == false)/*(bool)(x.IsDelete = false)*/).ToList());
             prod.ItemsSource = menu;
             prod.Items.Refresh();
             if (globAdmin==true)

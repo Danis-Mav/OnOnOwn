@@ -120,7 +120,7 @@ namespace WpfAppOnOnOwn.Pages
                 constmenu.IDtype = 5;
             }
 
-            DataAccess.AddDish(constmenu);
+            DataAccess.EditDish(constmenu);
             NavigationService.Navigate(new MenuPage(MenuPage.globAdmin, MainPage.currentOrder));
 
         }
