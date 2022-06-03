@@ -130,38 +130,7 @@ namespace OnOnOwn
                 return false;
             }
         }
-        public static ObservableCollection<menu> GetAllMenu()
-        {
-            var listBase = new ObservableCollection<menu>();
-
-            foreach (var i in Getmenu())
-            {
-                var gh = new menu();
-                gh.IDmenu = i.IDmenu;
-                gh.NameDish = i.NameDish;
-                gh.description = i.description;
-                gh.IsST = i.IsST;
-                gh.IsDelete = i.IsDelete;
-                gh.Price = i.Price;
-                listBase.Add(gh);
-            }
-            return listBase;
-        }
-        public static ObservableCollection<OrderMenu> GetAllOrderMenu()
-        {
-            var listBase = new ObservableCollection<OrderMenu>();
-
-            foreach (var i in GetOrderMenu())
-            {
-                var m = new OrderMenu();
-                m.IDMenu = i.IDMenu;
-                m.price = i.price;
-                m.IDorder = i.IDorder;
-                m.IsOrder = i.IsOrder;
-                listBase.Add(m);
-            }
-            return listBase;
-        }
+       
         public static void RemoveDish(int id)
         {
             DBConnection.connection.OrderMenu.Remove(GetOrderMenu(id));

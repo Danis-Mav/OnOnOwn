@@ -11,7 +11,6 @@ namespace TestOnOnOwn
         public void TestAddMenu()
         {
             DataAccess.AddMenu("Dish", 100, "Nice Dish", 2, 1, false, false);
-
             
         }
         [TestMethod]
@@ -24,5 +23,11 @@ namespace TestOnOnOwn
         {
             DataAccess.DeleteDish(menu);
         }
+        [TestMethod]
+        public void GetAllMenu()
+        {
+            DataAccess.RemoveDish(1);
+        }
+
     }
 }

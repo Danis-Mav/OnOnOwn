@@ -11,9 +11,9 @@ namespace API.Controllers
     public class MenuController : Controller
     {
         [HttpGet]
-        public IEnumerable<menu> GetAllMenu()
+        public IEnumerable<List<menu>> GetAllMenu()
         {
-            return DataAccess.Getmenu();
+            return (IEnumerable<List<menu>>)DataAccess.Getmenu();
         }
         [HttpGet]
         public IEnumerable<OrderMenu> GetAllOrderMenu()
@@ -22,17 +22,17 @@ namespace API.Controllers
         }
 
 
-        [HttpPost("{NameDish}/{price}/{description}/{IDcountry}/{IDtype}/{IsDelete}/{IsST}")]
+        [HttpPost]
         public IActionResult AddMenu(string NameDish, int price, string description,int IDcountry,int IDtype,bool IsDelete,bool IsST)
         {
             DataAccess.AddMenu(NameDish, price, description, IDcountry, IDtype,IsDelete,IsST);
             return Content("dish created");
         }
-        [HttpPost("{Idmenu}/{price}/{idorder}/{IsOrder}")]
+        [HttpPost]
         public IActionResult AddOrderMenu(int Idmenu, int idorder, int price, bool IsOrder)
         {
             DataAccess.AddOrderMenu(Idmenu, price, idorder, IsOrder);
-            return Content("dish created");
+            return Content("dish created"); 
         }
     }
 }

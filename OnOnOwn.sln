@@ -9,9 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppOnOnOwn", "WpfAppOnOn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnOnOwnConsole", "Console\OnOnOwnConsole.csproj", "{7D966A77-324C-4846-91A5-F20096A6E5FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestOnOnOwn", "TestOnOnOwn\TestOnOnOwn.csproj", "{E74F18E4-A4C4-4E32-8D26-FA81E8862EC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestOnOnOwn", "TestOnOnOwn\TestOnOnOwn.csproj", "{E74F18E4-A4C4-4E32-8D26-FA81E8862EC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIOnOnOwn", "APIOnOnOwn\APIOnOnOwn.csproj", "{6DE0A8F0-BDDF-4E17-910E-8751572F65FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIOnOnOwn", "APIOnOnOwn\APIOnOnOwn.csproj", "{6DE0A8F0-BDDF-4E17-910E-8751572F65FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIMenu", "APIMenu\APIMenu.csproj", "{65222A0C-736F-4929-A548-E103C0C65FBC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{6DE0A8F0-BDDF-4E17-910E-8751572F65FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DE0A8F0-BDDF-4E17-910E-8751572F65FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DE0A8F0-BDDF-4E17-910E-8751572F65FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65222A0C-736F-4929-A548-E103C0C65FBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65222A0C-736F-4929-A548-E103C0C65FBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65222A0C-736F-4929-A548-E103C0C65FBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65222A0C-736F-4929-A548-E103C0C65FBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
