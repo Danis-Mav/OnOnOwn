@@ -29,7 +29,7 @@ namespace WpfAppOnOnOwn.Pages
         
         public AdmOrders()
         {
-            order = new ObservableCollection<Order>(DBConnection.connection.Order.Where(x => (bool)x.IsComplete == true).ToList());
+            order = new ObservableCollection<Order>(DBConnection.connection.Order.Where(x => ((bool)x.IsComplete == true  )).ToList());
             this.DataContext = this;
             InitializeComponent();
         }

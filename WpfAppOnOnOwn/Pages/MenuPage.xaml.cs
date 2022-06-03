@@ -101,7 +101,7 @@ namespace WpfAppOnOnOwn.Pages
                 newOM.price = menuToAdd.Price;
                 newOM.IDMenu = menuToAdd.IDmenu;
                 newOM.IDorder = current2Order;
-                newOM.IsOrder = false;
+                newOM.IsOrder = true;
                 DataAccess.DoOrderMenu(newOM);
             }
             else MessageBox.Show("Выберите блюдо");

@@ -62,6 +62,13 @@
             VerticalAlignment="Bottom"
             Margin="10">
         </StackPanel>
+        <TextBlock
+            x:Name="Total"
+            Grid.Row="2"
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            FontSize="30"
+            Foreground="White"/>
         <Button
             Content="Подтвердить готовку" 
                 FontSize="30"

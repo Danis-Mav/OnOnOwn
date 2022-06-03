@@ -20,6 +20,12 @@ namespace OnOnOwn
         {
             return new ObservableCollection<OrderMenu>(DBConnection.connection.OrderMenu.ToList());
         }
+        public static OrderMenu GetOrderMenu(int IdOM)
+        {
+            ObservableCollection<OrderMenu> users = new ObservableCollection<OrderMenu>(DBConnection.connection.OrderMenu);
+            var currentPet = users.Where(u => u.IDom == IdOM).FirstOrDefault();
+            return currentPet;
+        }
         public static bool AddDish(menu menu)
         {
             try
@@ -156,7 +162,11 @@ namespace OnOnOwn
             }
             return listBase;
         }
-
+        public static void RemoveDish(int id)
+        {
+            DBConnection.connection.OrderMenu.Remove(GetOrderMenu(id));
+            DBConnection.connection.SaveChanges();
+        }
 
     }
 }
