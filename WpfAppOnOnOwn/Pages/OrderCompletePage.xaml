@@ -48,9 +48,34 @@
             <ListView  x:Name="Orders" ItemsSource="{Binding order2show}" Height="700">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="№" Width="100" DisplayMemberBinding="{Binding IDom}"/>
-                        <GridViewColumn Header="Блюда" Width="300" DisplayMemberBinding="{Binding menu.NameDish}"/>
-                        <GridViewColumn Header="Стоимость" Width="100" DisplayMemberBinding="{Binding price}"/>
+                        <GridViewColumn Width="100"  Header="№" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="WrapWithOverflow" FontSize="15"  Text="{Binding IDom}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="100"  Header="№" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="WrapWithOverflow" FontSize="15"  Text="{Binding img}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="300"  Header="Блюда" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="WrapWithOverflow" FontSize="15"  Text="{Binding  menu.NameDish}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="200"  Header="Стоимость" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="WrapWithOverflow" FontSize="30"  Text="{Binding price}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
 
                     </GridView>
                 </ListView.View>

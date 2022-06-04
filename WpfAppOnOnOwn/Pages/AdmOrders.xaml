@@ -44,9 +44,27 @@
             <ListView  x:Name="Orders" ItemsSource="{Binding order}" Height="800" SelectionChanged="Orders_SelectionChanged">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="№" Width="100" DisplayMemberBinding="{Binding idOrder}"/>
-                        <GridViewColumn Header="№ Стола" Width="100" DisplayMemberBinding="{Binding idStol}"/>
-                        <GridViewColumn Header="Стоимость" Width="100" DisplayMemberBinding="{Binding FullPrice}"/>
+                        <GridViewColumn Width="200"  Header="№" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="WrapWithOverflow" FontSize="15"  Text="{Binding idOrder}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="300"  Header="№ Стола" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="WrapWithOverflow" FontSize="15"  Text="{Binding idStol}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="400"  Header="Стоимость" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="WrapWithOverflow" FontSize="30"  Text="{Binding FullPrice}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
 
                     </GridView>
                 </ListView.View>

@@ -63,7 +63,7 @@ namespace WpfAppOnOnOwn.Pages
             var b = new Order();
             b.FullPrice = blogNum;
             b.idStol = 1;
-            b.IsComplete = true;
+            b.IsComplete = false;
             DataAccess.DoOrder(b);
             MessageBox.Show("Заказ сделан");
             blogNum = 0;

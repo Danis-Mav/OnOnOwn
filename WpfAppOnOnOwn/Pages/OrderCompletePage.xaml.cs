@@ -47,7 +47,14 @@ namespace WpfAppOnOnOwn.Pages
 
         private void OrderComplete(object sender, RoutedEventArgs e)
         {
-                       
+            if (Orders.SelectedItem != null)
+            {
+
+                var menuToAdd = Orders.SelectedItem as Order;
+                menuToAdd.IsComplete = true;
+                DataAccess.DoOrder(menuToAdd);
+            }
+            else MessageBox.Show("Выберите блюдо");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

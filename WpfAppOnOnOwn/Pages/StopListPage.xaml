@@ -46,7 +46,7 @@
                     <GridView>
                         <GridViewColumn Header="№" Width="30" DisplayMemberBinding="{Binding IDmenu}" />
 
-                        <GridViewColumn Header="Фото" Width="200">
+                        <GridViewColumn Header="Фото" Width="300">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <Image Source="{Binding img}" Height="200" Margin="10"/>
@@ -54,15 +54,44 @@
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
-                        <GridViewColumn Header="Название блюда" Width="200" DisplayMemberBinding="{Binding NameDish}"/>
-                        <GridViewColumn Header="Страна" Width="100" DisplayMemberBinding="{Binding Country.NameCountry}"/>
-                        <GridViewColumn Header="Тип" Width="100" DisplayMemberBinding="{Binding Type.NameType}"/>
-                        <GridViewColumn Header="Цена" Width="40" DisplayMemberBinding="{Binding Price}"/>
-
-                        <GridViewColumn Width="300"  Header="Описание" >
+                        
+                        <GridViewColumn Width="300"  Header="Название блюда" >
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock TextWrapping="WrapWithOverflow"  Text="{Binding description}"></TextBlock>
+                                    <TextBlock TextWrapping="WrapWithOverflow" FontSize="15"  Text="{Binding NameDish}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Width="200"  Header="Страна" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="WrapWithOverflow" FontSize="15"  Text="{Binding Type.NameType}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Width="200"  Header="Тип" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="WrapWithOverflow" FontSize="15"  Text="{Binding Country.NameCountry}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        
+
+                        <GridViewColumn Width="400"  Header="Описание" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="WrapWithOverflow" FontSize="15"  Text="{Binding description}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        
+                        <GridViewColumn Width="100"  Header="Цена" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="WrapWithOverflow" FontSize="30"  Text="{Binding Price}"></TextBlock>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

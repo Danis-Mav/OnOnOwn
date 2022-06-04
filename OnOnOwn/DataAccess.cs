@@ -136,6 +136,9 @@ namespace OnOnOwn
             DBConnection.connection.OrderMenu.Remove(GetOrderMenu(id));
             DBConnection.connection.SaveChanges();
         }
-
+        public static menu GetToIdMenu(int id)
+        {
+            return DBConnection.connection.menu.Where(x=> x.IDmenu == id).FirstOrDefault();
+        }
     }
 }

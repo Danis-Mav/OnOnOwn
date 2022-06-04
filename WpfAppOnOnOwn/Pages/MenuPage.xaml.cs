@@ -66,29 +66,29 @@ namespace WpfAppOnOnOwn.Pages
 
         private void Button_hotDish(object sender, RoutedEventArgs e)
         {
-            prod.ItemsSource = new ObservableCollection<menu>(DBConnection.connection.menu.Where(p => p.IDtype == 1));
+            prod.ItemsSource = new ObservableCollection<menu>(DBConnection.connection.menu.Where(p => p.IDtype == 1 && (p.IsST == false) && (p.IsDelete == false)));
         }
 
         private void Button_coldDish(object sender, RoutedEventArgs e)
         {
-            prod.ItemsSource = new ObservableCollection<menu>(DBConnection.connection.menu.Where(p => p.IDtype == 2));
+            prod.ItemsSource = new ObservableCollection<menu>(DBConnection.connection.menu.Where(p => p.IDtype == 2 && (p.IsST == false) && (p.IsDelete == false)));
         }
         private void Button_Snacks(object sender, RoutedEventArgs e)
         {
-            prod.ItemsSource = new ObservableCollection<menu>(DBConnection.connection.menu.Where(p => p.IDtype == 3));
+            prod.ItemsSource = new ObservableCollection<menu>(DBConnection.connection.menu.Where(p => p.IDtype == 3 && (p.IsST == false) && (p.IsDelete == false)));
         }
         private void Button_Drinks(object sender, RoutedEventArgs e)
         {
-            prod.ItemsSource = new ObservableCollection<menu>(DBConnection.connection.menu.Where(p => p.IDtype == 4));
+            prod.ItemsSource = new ObservableCollection<menu>(DBConnection.connection.menu.Where(p => p.IDtype == 4 && (p.IsST == false) && (p.IsDelete == false)));
         }
         private void Button_Salad(object sender, RoutedEventArgs e)
         {
-            prod.ItemsSource = new ObservableCollection<menu>(DBConnection.connection.menu.Where(p => p.IDtype == 5));
+            prod.ItemsSource = new ObservableCollection<menu>(DBConnection.connection.menu.Where(p => p.IDtype == 5 && (p.IsST == false) && (p.IsDelete == false)));
         }
 
         private void Button_allDish(object sender, RoutedEventArgs e)
         {
-            prod.ItemsSource = new ObservableCollection<menu>(DBConnection.connection.menu.ToList());
+            prod.ItemsSource = new ObservableCollection<menu>(DBConnection.connection.menu.Where(p => p.IDtype == 5 && (p.IsST == false) && (p.IsDelete == false)).ToList());
         }
         private void ToOrderDish_Button(object sender, RoutedEventArgs e)
         {
