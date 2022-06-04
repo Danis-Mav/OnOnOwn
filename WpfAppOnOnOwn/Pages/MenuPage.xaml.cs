@@ -88,7 +88,7 @@ namespace WpfAppOnOnOwn.Pages
 
         private void Button_allDish(object sender, RoutedEventArgs e)
         {
-            prod.ItemsSource = new ObservableCollection<menu>(DBConnection.connection.menu.Where(p => p.IDtype == 5 && (p.IsST == false) && (p.IsDelete == false)).ToList());
+            prod.ItemsSource = new ObservableCollection<menu>(DBConnection.connection.menu.Where(p =>(p.IsST == false) && (p.IsDelete == false)).ToList());
         }
         private void ToOrderDish_Button(object sender, RoutedEventArgs e)
         {
